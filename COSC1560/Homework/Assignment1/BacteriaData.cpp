@@ -136,6 +136,8 @@ void displayRowSum(const int data[][COL_SIZE], int rowSize)
 
 		cout << "Sum for row " << r + 1 << ": " << sum << endl;
 	}
+
+	cout << endl;
 }
 
 //*******************************************************************************************************
@@ -153,8 +155,10 @@ void displayColSum(const int data[][COL_SIZE], int rowSize)
 		for (int r = 0; r < rowSize; r++)
 			sum += data[r][c];
 
-		cout << "Sum for column " << c + 1 << ": " << sum << endl << endl;
+		cout << "Sum for column " << c + 1 << ": " << sum << endl;
 	}
+
+	cout << endl;
 }
 
 //*******************************************************************************************************
@@ -169,3 +173,5 @@ int getDiagonalLowest(const int data[][COL_SIZE])
 
 	return lowest;
 }
+
+//*******************************************************************************************************
