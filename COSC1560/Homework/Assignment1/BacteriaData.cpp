@@ -53,6 +53,7 @@ int main()
 	cout << "The average for all values: " << getAllAverage(data, ROW_SIZE) << endl << endl;
 	displayRowSum(data, ROW_SIZE);
 	displayColSum(data, ROW_SIZE);
+	cout << "The lowest value for the left diagonal is: " << getDiagonalLowest(data);
 
 	return 0;
 }
@@ -133,7 +134,7 @@ void displayRowSum(const int data[][COL_SIZE], int rowSize)
 		for (int c = 0; c < COL_SIZE; c++)
 			sum += data[r][c];
 
-		cout << "Sum for row " << r + 1 << ": " << sum << endl << endl;
+		cout << "Sum for row " << r + 1 << ": " << sum << endl;
 	}
 }
 
@@ -157,3 +158,14 @@ void displayColSum(const int data[][COL_SIZE], int rowSize)
 }
 
 //*******************************************************************************************************
+
+int getDiagonalLowest(const int data[][COL_SIZE])
+{
+	int lowest = 501;
+
+	for (int i = 0; i < COL_SIZE; i++)
+		if (data[i][i] < lowest)
+			lowest = data[i][i];
+
+	return lowest;
+}
