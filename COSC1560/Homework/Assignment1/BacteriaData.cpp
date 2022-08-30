@@ -20,10 +20,8 @@
 //
 //*******************************************************************************************************
 
-#include
-<iostream>
-#include
-<iomanip>
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -47,95 +45,115 @@ int getDiagonalLowest(const int[][COL_SIZE]);
 
 int main()
 {
-const int ROW_SIZE = 4;
-int data[ROW_SIZE][COL_SIZE];
+	const int ROW_SIZE = 4;
+	int data[ROW_SIZE][COL_SIZE];
 
-getAllData(data, ROW_SIZE);
-displayAllData(data, ROW_SIZE);
-cout << "The average for all values: " << getAllAverage(data, ROW_SIZE) << endl << endl;
-displayRowSum(data, ROW_SIZE);
+	getAllData(data, ROW_SIZE);
+	displayAllData(data, ROW_SIZE);
+	cout << "The average for all values: " << getAllAverage(data, ROW_SIZE) << endl << endl;
+	displayRowSum(data, ROW_SIZE);
+	displayColSum(data, ROW_SIZE);
 
-return 0;
+	return 0;
 }
 
 //*******************************************************************************************************
 
 void getOneNum(int &data)
 {
-const int MIN = 0, MAX = 500;
-cin >> data;
+	const int MIN = 0, MAX = 500;
+	cin >> data;
 
-while (data < MIN || data > MAX)
-{
-cout << "Values cannot be less than " << MIN << " or greater than " << MAX << endl;
-cout << "Re-enter: ";
-cin >> data;
-}
+	while (data < MIN || data > MAX)
+	{
+		cout << "Values cannot be less than " << MIN << " or greater than " << MAX << endl;
+		cout << "Re-enter: ";
+		cin >> data;
+	}
 }
 
 //*******************************************************************************************************
 
 void getAllData(int data[][COL_SIZE], int rowSize)
 {
-for (int r = 0; r < rowSize; r++)
-{
-cout << "Enter values for row " << r + 1 << ": " << endl;
+	for (int r = 0; r < rowSize; r++)
+	{
+		cout << "Enter values for row " << r + 1 << ": " << endl;
 
-for (int c = 0; c < COL_SIZE; c++)
-{
-cout << "Value " << c + 1 << ": ";
-getOneNum(data[r][c]);
-}
-}
+		for (int c = 0; c < COL_SIZE; c++)
+		{
+			cout << "Value " << c + 1 << ": ";
+			getOneNum(data[r][c]);
+		}
+	}
 
-cout << endl;
+	cout << endl;
 }
 
 //*******************************************************************************************************
 
 void displayAllData(const int data[][COL_SIZE], int rowSize)
 {
-cout << "You have entered: " << endl;
-for (int r = 0; r < rowSize; r++)
-{
-for (int c = 0; c < COL_SIZE; c++)
-cout << data[r][c] << setw(5);
-cout << endl << setw(0);
-}
+	cout << "You have entered: " << endl;
+	for (int r = 0; r < rowSize; r++)
+	{
+		for (int c = 0; c < COL_SIZE; c++)
+			cout << data[r][c] << setw(5);
+		cout << endl << setw(0);
+	}
 
-cout << endl;
+	cout << endl;
 }
 
 //*******************************************************************************************************
 
 double getAllAverage(const int data[][COL_SIZE], int rowSize)
 {
-double sum = 0;
+	double sum = 0;
 
-for (int r = 0; r < rowSize; r++)
-for (int c = 0; c < COL_SIZE; c++)
-sum += data[r][c];
+	for (int r = 0; r < rowSize; r++)
+		for (int c = 0; c < COL_SIZE; c++)
+			sum += data[r][c];
 
-return static_cast<double>(sum / (rowSize * COL_SIZE));
+	return static_cast<double>(sum / (rowSize * COL_SIZE));
 }
 
 //*******************************************************************************************************
 
 void displayRowSum(const int data[][COL_SIZE], int rowSize)
 {
-int sum;
+	int sum;
 
-cout << "Sum of each row: " << endl;
+	cout << "Sum of each row: " << endl;
 
-for (int r = 0; r < rowSize; r++)
+	for (int r = 0; r < rowSize; r++)
+	{
+		sum = 0;
+
+		for (int c = 0; c < COL_SIZE; c++)
+			sum += data[r][c];
+
+		cout << "Sum for row " << r + 1 << ": " << sum << endl << endl;
+	}
+}
+
+//*******************************************************************************************************
+
+void displayColSum(const int data[][COL_SIZE], int rowSize)
 {
-sum = 0;
+	int sum;
 
-for (int c = 0; c < COL_SIZE; c++)
-{
-sum += data[r][c];
+	cout << "Sum of each column: " << endl;
+
+	for (int c = 0; c < COL_SIZE; c++)
+	{
+		sum = 0;
+
+		for (int r = 0; r < rowSize; r++)
+			sum += data[r][c];
+
+		cout << "Sum for column " << c + 1 << ": " << sum << endl << endl;
+	}
 }
 
-cout << "Sum for row " << r + 1 << ": " << sum << endl;
-}
-}
+//*******************************************************************************************************
