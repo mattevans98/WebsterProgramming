@@ -21,6 +21,7 @@
 //*******************************************************************************************************
 
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 
 using namespace std;
@@ -59,9 +60,9 @@ void display()
 	int *ptr = movies;
 
 	getAllData(ptr, SIZE);
+	displayAllValue(ptr, SIZE);
 	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month"
-		 << endl;
-	// displayAllValue(ptr, SIZE);
+		 << endl << endl;
 	cout << "Minimum number of movies watched was: " << getMin(ptr, SIZE) << endl;
 	// bubbleSort(ptr, SIZE);
 }
@@ -76,6 +77,7 @@ void getAllData(int *pArray, int size)
 		cout << "Student #" << i + 1 << ": ";
 		cin >> *(pArray + i);
 	}
+	cout << endl;
 }
 
 //*******************************************************************************************************
@@ -88,6 +90,23 @@ int getAverage(const int *pArray, int size)
 		sum += pArray[i];
 
 	return round(sum / size);
+}
+
+//*******************************************************************************************************
+
+void displayAllValue(const int *pArray, int size)
+{
+	const int lineIndex = 4;
+
+	cout << "All values entered: " << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << pArray[i] << setw(5);
+		if (i == lineIndex)
+			cout << endl << setw(0);
+	}
+
+	cout << setw(0) << endl << endl;
 }
 
 //*******************************************************************************************************
