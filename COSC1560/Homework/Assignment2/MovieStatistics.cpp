@@ -26,7 +26,7 @@ using namespace std;
 
 //*******************************************************************************************************
 
-// void display();
+void display();
 
 void getAllData(int *, int);
 
@@ -44,13 +44,21 @@ void swap(int *, int *);
 
 int main()
 {
+	display();
+
+	return 0;
+}
+
+//*******************************************************************************************************
+
+void display()
+{
 	const int SIZE = 10;
 	int movies[SIZE];
 	int *ptr = movies;
 
 	getAllData(ptr, SIZE);
-
-	return 0;
+	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month";
 }
 
 //*******************************************************************************************************
