@@ -26,6 +26,8 @@ using namespace std;
 
 //*******************************************************************************************************
 
+// void display();
+
 void getAllData(int *, int);
 
 int getAverage(const int *, int);
@@ -46,7 +48,23 @@ int main()
 	int movies[SIZE];
 	int *ptr = movies;
 
+	getAllData(ptr, SIZE);
+
 	return 0;
 }
 
 //*******************************************************************************************************
+
+void getAllData(int *pArray, int size)
+{
+	cout << "Enter all movie data" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Student #" << i + 1 << ": ";
+		cin >> *(pArray + i);
+	}
+}
+
+//*******************************************************************************************************
+
+//Output:
