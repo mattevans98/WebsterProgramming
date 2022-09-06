@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
 //*******************************************************************************************************
@@ -36,7 +37,7 @@ int getMin(const int *, int);
 
 void displayAllValue(const int *, int);
 
-void bubbleSort(int *, int);
+void bubbleSort(const int *, int);
 
 void swap(int *, int *);
 
@@ -58,7 +59,11 @@ void display()
 	int *ptr = movies;
 
 	getAllData(ptr, SIZE);
-	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month";
+	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month"
+		 << endl;
+	// displayAllValue(ptr, SIZE);
+	cout << "Minimum number of movies watched was: " << getMin(ptr, SIZE) << endl;
+	// bubbleSort(ptr, SIZE);
 }
 
 //*******************************************************************************************************
@@ -87,20 +92,40 @@ int getAverage(const int *pArray, int size)
 
 //*******************************************************************************************************
 
-void bubbleSort(int *pArray, int size)
+int getMin(const int *pArray, int size)
 {
+	int lowest = pArray[0];
 
+	for (int i = 1; i < size; i++)
+		if (lowest > pArray[i])
+			lowest = pArray[i];
+
+	return lowest;
 }
 
 //*******************************************************************************************************
+/*
+void bubbleSort(const int * pArray, int size)
+{
+	int comparison = size - 1;
 
+	for (; comparison > 0; comparison--)
+		for (int i = 0; i < comparison; i++)
+		{
+			if (pArray[i] > pArray[i + 1])
+				swap(pArray[i], pArray[i + 1]);
+		}
+}
+*/
+//*******************************************************************************************************
+/*
 void swap(int *a, int *b)
 {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
-
+*/
 //*******************************************************************************************************
 
 //Output:
