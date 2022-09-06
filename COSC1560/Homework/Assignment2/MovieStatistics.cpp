@@ -38,7 +38,7 @@ int getMin(const int *, int);
 
 void displayAllValue(const int *, int);
 
-void bubbleSort(int *const, int);
+void bubbleSort(int *, int);
 
 void swap(int *, int *);
 
@@ -99,13 +99,11 @@ int getAverage(const int *pArray, int size)
 
 void displayAllValue(const int *pArray, int size)
 {
-	const int lineIndex = 4;
-
 	for (int i = 0; i < size; i++)
 	{
-		cout << pArray[i] << setw(5);
-		if (i == lineIndex)
+		if (i == size / 2)
 			cout << endl << setw(0);
+		cout << pArray[i] << setw(5);
 	}
 
 	cout << setw(0) << endl << endl;
@@ -150,3 +148,30 @@ void swap(int *a, int *b)
 //*******************************************************************************************************
 
 //Output:
+
+/*
+Enter all movie data:
+Student #1: 3
+Student #2: 4
+Student #3: 2
+Student #4: 1
+Student #5: 0
+Student #6: 15
+Student #7: 9
+Student #8: 3
+Student #9: 4
+Student #10: 2
+
+All values entered:
+3    4    2    1    0
+15    9    3    4    2
+
+Students watched 4 movies in average last month
+
+Minimum number of movies watched was: 0
+
+All values sorted:
+0    1    2    2    3
+3    4    4    9   15
+
+*/
