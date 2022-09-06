@@ -38,7 +38,7 @@ int getMin(const int *, int);
 
 void displayAllValue(const int *, int);
 
-void bubbleSort(const int *, int);
+void bubbleSort(int *const, int);
 
 void swap(int *, int *);
 
@@ -60,18 +60,21 @@ void display()
 	int *ptr = movies;
 
 	getAllData(ptr, SIZE);
+	cout << "All values entered: " << endl;
 	displayAllValue(ptr, SIZE);
 	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month"
 		 << endl << endl;
-	cout << "Minimum number of movies watched was: " << getMin(ptr, SIZE) << endl;
-	// bubbleSort(ptr, SIZE);
+	cout << "Minimum number of movies watched was: " << getMin(ptr, SIZE) << endl << endl;
+	bubbleSort(ptr, SIZE);
+	cout << "All values sorted: " << endl;
+	displayAllValue(ptr, SIZE);
 }
 
 //*******************************************************************************************************
 
 void getAllData(int *pArray, int size)
 {
-	cout << "Enter all movie data" << endl;
+	cout << "Enter all movie data: " << endl;
 	for (int i = 0; i < size; i++)
 	{
 		cout << "Student #" << i + 1 << ": ";
@@ -98,7 +101,6 @@ void displayAllValue(const int *pArray, int size)
 {
 	const int lineIndex = 4;
 
-	cout << "All values entered: " << endl;
 	for (int i = 0; i < size; i++)
 	{
 		cout << pArray[i] << setw(5);
@@ -123,8 +125,8 @@ int getMin(const int *pArray, int size)
 }
 
 //*******************************************************************************************************
-/*
-void bubbleSort(const int * pArray, int size)
+
+void bubbleSort(int *const pArray, int size)
 {
 	int comparison = size - 1;
 
@@ -135,16 +137,16 @@ void bubbleSort(const int * pArray, int size)
 				swap(pArray[i], pArray[i + 1]);
 		}
 }
-*/
+
 //*******************************************************************************************************
-/*
+
 void swap(int *a, int *b)
 {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
-*/
+
 //*******************************************************************************************************
 
 //Output:
