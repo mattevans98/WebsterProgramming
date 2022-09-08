@@ -29,17 +29,11 @@ using namespace std;
 //*******************************************************************************************************
 
 void display();
-
 void getAllData(int *, int);
-
 int getAverage(const int *, int);
-
 int getMin(const int *, int);
-
 void displayAllValue(const int *, int);
-
 void bubbleSort(int *, int);
-
 void swap(int *, int *);
 
 //*******************************************************************************************************
@@ -62,9 +56,12 @@ void display()
 	getAllData(ptr, SIZE);
 	cout << "All values entered: " << endl;
 	displayAllValue(ptr, SIZE);
-	cout << "Students watched " << getAverage(ptr, SIZE) << " movies in average last month"
-		 << endl << endl;
-	cout << "Minimum number of movies watched was: " << getMin(ptr, SIZE) << endl << endl;
+	cout << endl << "Students watched "
+		 << getAverage(ptr, SIZE)
+		 << " movies in average last month" << endl <<
+		 endl;
+	cout << "Minimum number of movies watched was: "
+		 << getMin(ptr, SIZE) << " movies" << endl << endl;
 	bubbleSort(ptr, SIZE);
 	cout << "All values sorted: " << endl;
 	displayAllValue(ptr, SIZE);
@@ -92,7 +89,7 @@ int getAverage(const int *pArray, int size)
 	for (int i = 0; i < size; i++)
 		sum += pArray[i];
 
-	return round(sum / size);
+	return round(static_cast<double>(sum) / size);
 }
 
 //*******************************************************************************************************
@@ -102,11 +99,11 @@ void displayAllValue(const int *pArray, int size)
 	for (int i = 0; i < size; i++)
 	{
 		if (i == size / 2)
-			cout << endl << setw(0);
-		cout << pArray[i] << setw(5);
+			cout << endl;
+		cout << left << setw(5) << pArray[i];
 	}
 
-	cout << setw(0) << endl << endl;
+	cout << endl;
 }
 
 //*******************************************************************************************************
@@ -132,7 +129,7 @@ void bubbleSort(int *const pArray, int size)
 		for (int i = 0; i < comparison; i++)
 		{
 			if (pArray[i] > pArray[i + 1])
-				swap(pArray[i], pArray[i + 1]);
+				swap(&pArray[i], &pArray[i + 1]);
 		}
 }
 
@@ -164,14 +161,17 @@ Student #10: 2
 
 All values entered:
 3    4    2    1    0
-15    9    3    4    2
+15   9    3    4    2
 
 Students watched 4 movies in average last month
 
-Minimum number of movies watched was: 0
+Minimum number of movies watched was: 0 movies
 
 All values sorted:
 0    1    2    2    3
-3    4    4    9   15
+3    4    4    9    15
 
+Process finished with exit code 0
 */
+
+//*******************************************************************************************************
