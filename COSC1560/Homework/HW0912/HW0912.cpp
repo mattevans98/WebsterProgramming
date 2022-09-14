@@ -32,11 +32,13 @@ int *expand(int *, int);
 
 int main()
 {
-	const int SIZE = 3;
-	int *ptr = nullptr;
-	ptr = new int[SIZE];
+	const int SIZE = 5;
+	int *ptr = new int[SIZE]{3, 4, 5, 7, 9,};
 
+	// ptr = getData(SIZE);
 	ptr = expand(ptr, SIZE);
+
+	delete[] ptr;
 
 	return 0;
 }
@@ -55,6 +57,8 @@ int *expand(int *ptr, int size)
 			newPtr[i] = ptr[i];
 		else
 			newPtr[i] = 0;
+
+		cout << newPtr[i] << endl;
 	}
 
 	return newPtr;
