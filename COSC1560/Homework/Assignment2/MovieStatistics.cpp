@@ -75,7 +75,7 @@ void getAllData(int *pArray, int size)
 	for (int i = 0; i < size; i++)
 	{
 		cout << "Student #" << i + 1 << ": ";
-		cin >> *(pArray + i);
+		cin >> *pArray++;
 	}
 	cout << endl;
 }
@@ -127,10 +127,8 @@ void bubbleSort(int *const pArray, int size)
 
 	for (; comparison > 0; comparison--)
 		for (int i = 0; i < comparison; i++)
-		{
-			if (pArray[i] > pArray[i + 1])
+			if (*(pArray + i) > *(pArray + i + 1))
 				swap(&pArray[i], &pArray[i + 1]);
-		}
 }
 
 //*******************************************************************************************************
