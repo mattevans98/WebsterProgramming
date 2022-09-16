@@ -20,22 +20,44 @@
 //
 //*******************************************************************************************************
 
+#include <iostream>
+using namespace std;
+
+//*******************************************************************************************************
+
 int *getData(int);
 void display(const int *, int);
 void reverse(int *const, int);
 int *expand(int *, int);
 int *shift(int *, int);
 
-#include <iostream>
-
-using namespace std;
+//*******************************************************************************************************
 
 int main()
 {
 	int size;
-	int *ptr;
+	int *ptr = nullptr;
+
 	cout << "Please enter a size: ";
 	cin >> size;
 
+	ptr = getData(size);
+
+
+	delete[] ptr;
 	return 0;
+}
+
+int *getData(int size)
+{
+	int *pArray = new int[size];
+
+	cout << "Enter all values now";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Value " << i + 1 << ": ";
+		cin >> pArray[i];
+	}
+
+	return pArray;
 }
