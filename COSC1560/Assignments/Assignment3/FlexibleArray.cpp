@@ -21,12 +21,13 @@
 //*******************************************************************************************************
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //*******************************************************************************************************
 
 int *getData(int);
-void display(const int *, int);
+void display(int *, int);
 void reverse(int *const, int);
 int *expand(int *, int);
 int *shift(int *, int);
@@ -42,17 +43,19 @@ int main()
 	cin >> size;
 
 	ptr = getData(size);
-
+	display(ptr, size);
 
 	delete[] ptr;
 	return 0;
 }
 
+//*******************************************************************************************************
+
 int *getData(int size)
 {
 	int *pArray = new int[size];
 
-	cout << "Enter all values now";
+	cout << "Enter all values now" << endl;
 	for (int i = 0; i < size; i++)
 	{
 		cout << "Value " << i + 1 << ": ";
@@ -60,4 +63,19 @@ int *getData(int size)
 	}
 
 	return pArray;
+}
+
+//*******************************************************************************************************
+
+void display(int *ptr, int size)
+{
+	const int MAX_LINES = 5;
+
+	cout << "All values are:" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		if (i == MAX_LINES)
+			cout << endl;
+		cout << left << setw(5) << ptr[i];
+	}
 }
