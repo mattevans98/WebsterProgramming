@@ -27,9 +27,9 @@ using namespace std;
 //*******************************************************************************************************
 
 int *getData(int);
-void display(int *, int);
+void display(const int *, int);
 void reverse(int *const, int);
-int *expand(int *, int);
+int *expand(int *, int &);
 int *shift(int *, int);
 
 //*******************************************************************************************************
@@ -44,6 +44,7 @@ int main()
 
 	ptr = getData(size);
 	display(ptr, size);
+	ptr = expand(ptr, size);
 
 	delete[] ptr;
 	return 0;
@@ -67,7 +68,7 @@ int *getData(int size)
 
 //*******************************************************************************************************
 
-void display(int *ptr, int size)
+void display(const int *ptr, int size)
 {
 	const int MAX_LINES = 5;
 
@@ -78,4 +79,18 @@ void display(int *ptr, int size)
 			cout << endl;
 		cout << left << setw(5) << ptr[i];
 	}
+}
+
+//*******************************************************************************************************
+
+int *expand(int *ptr, int &size)
+{
+	size *= 2;
+	int *pNewArr = new int[size];
+
+	for (int i = 0; i < size; i++)
+		pNewArr[i] = (i < size ? ptr[i] : 0);
+
+	delete[] ptr;
+	return pNewArr;
 }
