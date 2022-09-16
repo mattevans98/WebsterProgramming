@@ -41,6 +41,7 @@ void display(const int *, int, displayType);
 void reverse(int *const, int);
 int *expand(int *, int &);
 int *shift(int *, int &);
+void swap(int &, int &);
 
 //*******************************************************************************************************
 
@@ -55,6 +56,9 @@ int main()
 
 	ptr = getData(size);
 	type = INPUT;
+	display(ptr, size, type);
+	reverse(ptr, size);
+	type = REVERSED;
 	display(ptr, size, type);
 	ptr = expand(ptr, size);
 	type = EXPANDED;
@@ -116,6 +120,16 @@ void display(const int *ptr, int size, displayType type)
 
 //*******************************************************************************************************
 
+void reverse(int *const ptr, int size)
+{
+	int temp;
+
+	for (int i = 0; i < size / 2; i++)
+		swap(ptr[i], ptr[size - i - 1]);
+}
+
+//*******************************************************************************************************
+
 int *expand(int *ptr, int &size)
 {
 	size *= 2;
@@ -143,3 +157,14 @@ int *shift(int *ptr, int &size)
 	delete[] ptr;
 	return pNewArr;
 }
+
+//*******************************************************************************************************
+
+void swap(int &first, int &second)
+{
+	int temp = first;
+	first = second;
+	second = temp;
+}
+
+//*******************************************************************************************************
