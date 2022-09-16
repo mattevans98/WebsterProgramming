@@ -57,11 +57,17 @@ int main()
 	ptr = getData(size);
 	type = INPUT;
 	display(ptr, size, type);
+
 	reverse(ptr, size);
 	type = REVERSED;
 	display(ptr, size, type);
+
 	ptr = expand(ptr, size);
 	type = EXPANDED;
+	display(ptr, size, type);
+
+	ptr = shift(ptr, size);
+	type = SHIFTED;
 	display(ptr, size, type);
 
 	delete[] ptr;
@@ -80,7 +86,6 @@ int *getData(int size)
 		cout << "Value " << i + 1 << ": ";
 		cin >> pArray[i];
 	}
-	cout << endl;
 
 	return pArray;
 }
@@ -90,6 +95,8 @@ int *getData(int size)
 void display(const int *ptr, int size, displayType type)
 {
 	const int MAX_LINES = 5;
+
+	cout << endl;
 
 	switch (type)
 	{
@@ -147,11 +154,11 @@ int *expand(int *ptr, int &size)
 int *shift(int *ptr, int &size)
 {
 	const int FIRST_VAL = 100;
-	int newSize = size + 1;
-	int *pNewArr = new int[newSize];
+	size++;
+	int *pNewArr = new int[size];
 	pNewArr[0] = FIRST_VAL;
 
-	for (int i = 1; i < newSize; i++)
+	for (int i = 1; i < size; i++)
 		pNewArr[i] = ptr[i - 1];
 
 	delete[] ptr;
@@ -168,3 +175,28 @@ void swap(int &first, int &second)
 }
 
 //*******************************************************************************************************
+
+// Output:
+/*
+ * Please enter a size: 3
+Enter all values now
+Value 1: 1
+Value 2: 2
+Value 3: 3
+
+All values are:
+1    2    3
+
+After reversing, all values are:
+3    2    1
+
+After expanding, all values are:
+3    2    1    0    0
+0
+
+After shifting, all values are:
+100  3    2    1    0
+0    0
+
+Process finished with exit code 0
+ */
