@@ -54,6 +54,12 @@ int main()
 	cout << "Please enter a size: ";
 	cin >> size;
 
+	while (size < 2 || size > 10)
+	{
+		cout << "Please enter a size bewteen 2 and 10: ";
+		cin >> size;
+	}
+
 	ptr = getData(size);
 	type = INPUT;
 	display(ptr, size, type);
