@@ -13,7 +13,7 @@
 //		Due:					9/23/2022
 //
 //
-//		This program answers the prompts on the assigned worksheet
+//		This program answers the prompts on the assigned worksheet fro problems #2, #4, and #5
 //
 //		Other files required:
 //			1.	none
@@ -26,6 +26,11 @@ using namespace std;
 
 //*******************************************************************************************************
 
+// Problem #5 function prototype
+void change(char *);
+
+//*******************************************************************************************************
+
 int main()
 {
 	const int SIZE = 81;
@@ -35,7 +40,24 @@ int main()
 	strcpy(str, "Hello");
 	cout << str << endl;
 
+	// Problem #4
+	strcpy(str, "Mississippi");
+	cout << str << endl;
+	// Problem #5 function call
+	change(str);
+	cout << str << endl;
 
+	return 0;
+}
+
+//*******************************************************************************************************
+
+// Problem #5 function definition
+void change(char *str)
+{
+	for (int i = 0; i < strlen(str); i++)
+		if (str[i] == 's')
+			str[i] = 'x';
 }
 
 //*******************************************************************************************************
