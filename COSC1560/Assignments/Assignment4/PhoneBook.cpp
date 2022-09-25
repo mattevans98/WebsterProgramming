@@ -26,16 +26,17 @@ using namespace std;
 
 //*******************************************************************************************************
 
+const int SIZE = 11;
 const int STRING_SIZE = 81;
 
 //*******************************************************************************************************
 
 void handler();
-void fill();
-void search(char *[], int);
-char *getShortest(char *[], int);
-void enterBirthday(char *[], int);
-void display(char *[], int);
+void fill(char [][STRING_SIZE]);
+void search(char *[]);
+char *getShortest(char *[]);
+void enterBirthday(char *[]);
+void display(char *[]);
 
 //*******************************************************************************************************
 
@@ -50,16 +51,15 @@ int main()
 
 void handler()
 {
-	fill();
+
+	char phoneBook[SIZE][STRING_SIZE];
+	fill(phoneBook);
 }
 
 //*******************************************************************************************************
 
-void fill()
+void fill(char phoneBook[][STRING_SIZE])
 {
-	const int SIZE = 11;
-	char phoneBook[SIZE][STRING_SIZE];
-
 	char namesNums[SIZE][STRING_SIZE] = {
 			"Alejandra Cruz, 555-1223",
 			"Joe looney, 555-0097",
