@@ -34,7 +34,7 @@ const int STRING_SIZE = 81;
 void handler();
 void fill(char **);
 void search(char **);
-char getShortest(char [][STRING_SIZE]);
+char *getShortest(char **);
 void enterBirthday(char [][STRING_SIZE]);
 void display(char [][STRING_SIZE]);
 
@@ -58,26 +58,13 @@ void handler()
 
 	fill(phoneBook);
 	search(phoneBook);
+	cout << "The shortest entry is " << getShortest(phoneBook) << endl;
 }
 
 //*******************************************************************************************************
 
 void fill(char **phoneBook)
 {
-	/*char ** pNamesNums = new char*[SIZE] {
-			"Alejandra Cruz, 555-1223",
-			"Joe looney, 555-0097",
-			"Geri Palmer, 555-8787",
-			"Li Chen, 555-1212",
-			"Holly Gaddis, 555-8878",
-			"Sam Wiggins, 555-0998",
-			"Bob Kain, 555-8712",
-			"Tim Haynes, 555-7676",
-			"Warren Gaddis, 555-9037",
-			"Jean James, 555-4939",
-			"Rom Palmer, 555-2783"
-	};*/
-
 	char namesNums[][STRING_SIZE] = {
 			"Alejandra Cruz, 555-1223",
 			"Joe looney, 555-0097",
@@ -130,3 +117,15 @@ void search(char **phoneBook)
 
 //*******************************************************************************************************
 
+char *getShortest(char **phoneBooks)
+{
+	char *pShortest = phoneBooks[0];
+
+	for (int i = 1; i < SIZE; ++i)
+	{
+		if (strlen(phoneBooks[i]) < strlen(pShortest))
+			pShortest = phoneBooks[i];
+	}
+
+	return pShortest;
+}
