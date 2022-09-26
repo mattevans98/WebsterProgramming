@@ -61,6 +61,10 @@ void handler()
 	cout << "The shortest entry is " << getShortest(phoneBook, SIZE) << endl << endl;
 	enterBirthday(phoneBook);
 	display(phoneBook, SIZE);
+
+	for (int i = 0; i < SIZE; ++i)
+		delete[] phoneBook[i];
+	delete[] phoneBook;
 }
 
 //*******************************************************************************************************
@@ -115,6 +119,12 @@ void search(char **phoneBook, const int SIZE)
 
 	if (matchNum == 0)
 		cout << "No entries were found for " << pInput << endl;
+
+	delete[] pInput;
+	delete[] ptr;
+	for (int i = 0; i < SIZE; ++i)
+		delete[] pFound[i];
+	delete[] pFound;
 }
 
 //*******************************************************************************************************
@@ -144,6 +154,8 @@ void enterBirthday(char **phoneBook)
 		cout << "Happy birthday!" << endl;
 
 	strcat(phoneBook[0], birthday);
+
+	delete[] birthday;
 }
 
 //*******************************************************************************************************
