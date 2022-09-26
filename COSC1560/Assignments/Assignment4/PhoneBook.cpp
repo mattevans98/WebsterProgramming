@@ -35,7 +35,7 @@ void handler();
 void fill(char **);
 void search(char **);
 char *getShortest(char **);
-void enterBirthday(char [][STRING_SIZE]);
+void enterBirthday(char **);
 void display(char [][STRING_SIZE]);
 
 //*******************************************************************************************************
@@ -51,14 +51,14 @@ int main()
 
 void handler()
 {
-	//char phoneBook[SIZE][STRING_SIZE];
 	char **phoneBook = new char *[SIZE];
 	for (int i = 0; i < SIZE; ++i)
 		phoneBook[i] = new char[STRING_SIZE];
 
 	fill(phoneBook);
 	search(phoneBook);
-	cout << "The shortest entry is " << getShortest(phoneBook) << endl;
+	cout << "The shortest entry is " << getShortest(phoneBook) << endl << endl;
+	enterBirthday(phoneBook);
 }
 
 //*******************************************************************************************************
@@ -129,3 +129,20 @@ char *getShortest(char **phoneBooks)
 
 	return pShortest;
 }
+
+//*******************************************************************************************************
+
+void enterBirthday(char **phoneBook)
+{
+	char *birthday = new char[STRING_SIZE];
+	cout << "Please enter a birthday in the format of MM/DD: ";
+	cin >> birthday;
+
+	if (strcmp(birthday, "09/23") == 0)
+		cout << "Happy birthday!" << endl;
+
+	strcat(phoneBook[0], birthday);
+}
+
+//*******************************************************************************************************
+
