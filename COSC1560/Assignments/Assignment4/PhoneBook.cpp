@@ -26,17 +26,16 @@ using namespace std;
 
 //*******************************************************************************************************
 
-const int SIZE = 11;
 const int STRING_SIZE = 81;
 
 //*******************************************************************************************************
 
 void handler();
-void fill(char **);
-void search(char **);
-char *getShortest(char **);
+void fill(char **, int);
+void search(char **, int);
+char *getShortest(char **, int);
 void enterBirthday(char **);
-void display(char **);
+void display(char **, int);
 
 //*******************************************************************************************************
 
@@ -51,21 +50,22 @@ int main()
 
 void handler()
 {
+	const int SIZE = 11;
 	char **phoneBook = new char *[SIZE];
 	for (int i = 0; i < SIZE; ++i)
 		phoneBook[i] = new char[STRING_SIZE];
 
-	fill(phoneBook);
-	display(phoneBook);
-	search(phoneBook);
-	cout << "The shortest entry is " << getShortest(phoneBook) << endl << endl;
+	fill(phoneBook, SIZE);
+	display(phoneBook, SIZE);
+	search(phoneBook, SIZE);
+	cout << "The shortest entry is " << getShortest(phoneBook, SIZE) << endl << endl;
 	enterBirthday(phoneBook);
-	display(phoneBook);
+	display(phoneBook, SIZE);
 }
 
 //*******************************************************************************************************
 
-void fill(char **phoneBook)
+void fill(char **phoneBook, const int SIZE)
 {
 	char namesNums[][STRING_SIZE] = {
 			"Alejandra Cruz, 555-1223",
@@ -88,7 +88,7 @@ void fill(char **phoneBook)
 
 //*******************************************************************************************************
 
-void search(char **phoneBook)
+void search(char **phoneBook, const int SIZE)
 {
 	char *pInput = new char[STRING_SIZE];
 	char **pFound = new char *[SIZE];
@@ -119,7 +119,7 @@ void search(char **phoneBook)
 
 //*******************************************************************************************************
 
-char *getShortest(char **phoneBooks)
+char *getShortest(char **phoneBooks, const int SIZE)
 {
 	char *pShortest = phoneBooks[0];
 
@@ -148,7 +148,7 @@ void enterBirthday(char **phoneBook)
 
 //*******************************************************************************************************
 
-void display(char **phoneBook)
+void display(char **phoneBook, const int SIZE)
 {
 	cout << "********************************************************************************" << endl;
 	cout << "All entries" << endl;
@@ -159,3 +159,45 @@ void display(char **phoneBook)
 
 //*******************************************************************************************************
 
+// Output:
+/*
+********************************************************************************
+All entries
+Alejandra Cruz, 555-1223
+Joe looney, 555-0097
+Geri Palmer, 555-8787
+Li Chen, 555-1212
+Holly Gaddis, 555-8878
+Sam Wiggins, 555-0998
+Bob Kain, 555-8712
+Tim Haynes, 555-7676
+Warren Gaddis, 555-9037
+Jean James, 555-4939
+Rom Palmer, 555-2783
+
+Enter a name or partial name to search for: Palmer
+
+Here are the results of the search:
+Geri Palmer, 555-8787
+Rom Palmer, 555-2783
+The shortest entry is Li Chen, 555-1212
+
+Please enter a birthday in the format of MM/DD: 09/23
+Happy birthday!
+********************************************************************************
+All entries
+Alejandra Cruz, 555-122309/23
+Joe looney, 555-0097
+Geri Palmer, 555-8787
+Li Chen, 555-1212
+Holly Gaddis, 555-8878
+Sam Wiggins, 555-0998
+Bob Kain, 555-8712
+Tim Haynes, 555-7676
+Warren Gaddis, 555-9037
+Jean James, 555-4939
+Rom Palmer, 555-2783
+
+
+Process finished with exit code 0
+*/
