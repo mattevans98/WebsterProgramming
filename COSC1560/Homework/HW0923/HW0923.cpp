@@ -20,4 +20,34 @@
 //
 //*******************************************************************************************************
 
+#include <iostream>
+#include <cstring>
+using namespace std;
 
+//*******************************************************************************************************
+
+void get_extension(char *, char *);
+
+//*******************************************************************************************************
+
+int main()
+{
+	char *fileName = new char[81];
+	char *extension = new char[81];
+	strcpy(fileName, "names.txt");
+
+	get_extension(fileName, extension);
+
+	cout << "extension: " << extension << endl;
+
+	delete[] extension;
+	delete[] fileName;
+	return 0;
+}
+
+//*******************************************************************************************************
+
+void get_extension(char *fileName, char *extension)
+{
+	extension = strstr(fileName, ".");
+}
