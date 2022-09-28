@@ -32,7 +32,7 @@ int fun(char *, char *);
 int main()
 {
 	cout << fun("abcd", "bcd") << endl;        // Output: 2
-	// See tracing table below
+													 // See tracing table below
 	return 0;
 }
 
@@ -47,18 +47,18 @@ int fun(char *s, char *t)
 	{
 		for (p2 = t; !stop && *p2 != '\0'; p2++)    // Inner for loop iterates over each char in t
 		{
-			if (*p1 == *p2)                            // Loop stops if the chars in *p1 and *2 are equal
+			if (*p1 == *p2)                         // Loop stops if the chars in *p1 and *2 are equal
 				stop = true;
 		}
-		if (*p2 != '\0')                            // After iterating over p2, the outer loop stops in
+		if (*p2 != '\0')                            // After iterating over p2, the outer loop stops if
 			stop = true;                            // *p2 equals '\0' (meaning the end of the
-		// c-string was reached
+													// c-string was reached with no matches)
 	}
-	return p1 - s;                                    // p1 points to s+1 after loop execution so
-	// (s+1) - s is returned. This evaluates to 2
-	// because the size of a char is 2 bytes. If the
-}                                                    // address of s was 1000, the equation would be:
-// (1000+2) - 1000 = 2
+	return p1 - s;                                  // p1 points to s+1 after loop execution so
+													// (s+1) - s is returned. This evaluates to 2
+													// because the size of a char is 2 bytes. If the
+}                                                   // address of s was 1000, the equation would be:
+													// (1000+2) - 1000 = 2
 
 //*******************************************************************************************************
 
