@@ -20,6 +20,7 @@
 //
 //*******************************************************************************************************
 
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -31,7 +32,11 @@ void find_remove_gh(string &);
 
 int main()
 {
+	string str = "night";
 
+	cout << str << endl;
+	find_remove_gh(str);
+	cout << str << endl;
 
 	return 0;
 }
@@ -40,7 +45,17 @@ int main()
 
 void find_remove_gh(string &str)
 {
-
+	size_t foundIndex = str.find("gh");
+	if (foundIndex != string::npos)
+		str.erase(foundIndex);
 }
 
 //*******************************************************************************************************
+
+// Output:
+/*
+night
+ni
+
+Process finished with exit code 0
+*/
