@@ -28,6 +28,7 @@ using namespace std;
 //*******************************************************************************************************
 
 void handler();
+void swap(char *, char *);
 bool check_valid(const string &);
 void convert_to_upper(string &);
 void reverse(string &);
@@ -59,8 +60,18 @@ void handler()
 		getline(cin, input);
 	}
 	convert_to_upper(input);
+	reverse(input);
 
 	cout << "Pig Latin is: " << endl << input;
+}
+
+//*******************************************************************************************************
+
+void swap(char *first, char *second)
+{
+	char *temp = first;
+	first = second;
+	second = temp;
 }
 
 //*******************************************************************************************************
@@ -82,6 +93,16 @@ void convert_to_upper(string &str)
 {
 	for (int i = 0; str[i] != '\0'; ++i)
 		str[i] = toupper(str[i]);
+}
+
+//*******************************************************************************************************
+
+void reverse(string &str)
+{
+	const size_t SIZE = str.length();
+
+	for (int i = 0; i < (SIZE / 2); ++i)
+		swap(str[i], str[SIZE - i - 1]);
 }
 
 //*******************************************************************************************************
