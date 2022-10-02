@@ -28,7 +28,6 @@ using namespace std;
 //*******************************************************************************************************
 
 void handler();
-void swap(char *, char *);
 bool check_valid(const string &);
 void convert_to_upper(string &);
 void reverse(string &);
@@ -62,18 +61,9 @@ void handler()
 	find_remove_gh(input);
 	convert_to_upper(input);
 	reverse(input);
-
-
+	append_ay(input);
+	append_length(input);
 	cout << "Pig Latin is: " << endl << input;
-}
-
-//*******************************************************************************************************
-
-void swap(char *first, char *second)
-{
-	char *temp = first;
-	first = second;
-	second = temp;
 }
 
 //*******************************************************************************************************
@@ -118,3 +108,14 @@ void find_remove_gh(string &str)
 
 //*******************************************************************************************************
 
+void append_ay(string &str)
+{
+	str.append("ay");
+}
+
+//*******************************************************************************************************
+
+void append_length(string &str)
+{
+	str.append(to_string(str.length()));
+}
