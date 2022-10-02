@@ -58,12 +58,14 @@ void handler()
 		cout << "Please enter a sentence in English: " << endl;
 		getline(cin, input);
 	}
+
 	find_remove_gh(input);
 	convert_to_upper(input);
 	reverse(input);
 	append_ay(input);
 	append_length(input);
-	cout << "Pig Latin is: " << endl << input;
+
+	cout << "Pig Latin is: " << endl << input << endl;
 }
 
 //*******************************************************************************************************
@@ -119,3 +121,18 @@ void append_length(string &str)
 {
 	str.append(to_string(str.length()));
 }
+
+//*******************************************************************************************************
+
+// Output:
+/*
+Please enter a sentence in English:
+no g-h here
+A sentence cannot contain punctuation
+Please enter a sentence in English:
+no g h here
+Pig Latin is:
+EREH H G ONay13
+
+Process finished with exit code 0
+*/
