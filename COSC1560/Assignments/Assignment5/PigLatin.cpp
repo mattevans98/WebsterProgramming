@@ -51,13 +51,14 @@ void handler()
 	string input;
 
 	cout << "Please enter a sentence in English: " << endl;
-	cin >> input;
+	getline(cin, input);
 	while (!check_valid(input))
 	{
 		cout << "A sentence cannot contain punctuation" << endl;
 		cout << "Please enter a sentence in English: " << endl;
-		cin >> input;
+		getline(cin, input);
 	}
+	convert_to_upper(input);
 
 	cout << "Pig Latin is: " << endl << input;
 }
@@ -73,6 +74,14 @@ bool check_valid(const string &str)
 			isValid = false;
 
 	return isValid;
+}
+
+//*******************************************************************************************************
+
+void convert_to_upper(string &str)
+{
+	for (int i = 0; str[i] != '\0'; ++i)
+		str[i] = toupper(str[i]);
 }
 
 //*******************************************************************************************************
