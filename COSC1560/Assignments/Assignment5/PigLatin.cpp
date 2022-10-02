@@ -59,8 +59,10 @@ void handler()
 		cout << "Please enter a sentence in English: " << endl;
 		getline(cin, input);
 	}
+	find_remove_gh(input);
 	convert_to_upper(input);
 	reverse(input);
+
 
 	cout << "Pig Latin is: " << endl << input;
 }
@@ -106,3 +108,13 @@ void reverse(string &str)
 }
 
 //*******************************************************************************************************
+
+void find_remove_gh(string &str)
+{
+	size_t foundIndex = str.find("gh");
+	if (foundIndex != string::npos)
+		str.erase(foundIndex);
+}
+
+//*******************************************************************************************************
+
