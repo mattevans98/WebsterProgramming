@@ -3,6 +3,7 @@ using namespace std;
 
 void capitalize(char *);
 int sum(char *);
+bool check(char *);
 
 int main()
 {
@@ -56,4 +57,23 @@ int sum(char *str)
 	}
 
 	return total;
+}
+
+bool check(char * pw)
+{
+	bool hasPunct = false;
+	bool hasSpace = false;
+
+	while (*pw != '\0')
+	{
+		if (ispunct(*pw))
+			hasPunct = true;
+
+		if (isspace(*pw))
+			hasSpace = true;
+
+		pw++;
+	}
+
+	return !hasSpace && hasPunct;
 }
