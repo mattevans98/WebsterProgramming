@@ -23,6 +23,7 @@ struct Rectangle
 //*******************************************************************************************************
 
 void getInput(Rectangle &);
+void display(const Rectangle &);
 
 //*******************************************************************************************************
 
@@ -48,7 +49,14 @@ int main()
 	myRecs[0].length = 100;
 
 	getInput(carpet);
+	display(carpet);
 
+	// Dynamic memory allocation of object
+	Rectangle *p;
+	p = new Rectangle;
+	getInput(*p);
+
+	delete p;
 	return 0;
 }
 
@@ -63,3 +71,8 @@ void getInput(Rectangle &recs)
 }
 
 //*******************************************************************************************************
+
+void display(const Rectangle &rec)
+{
+	cout << rec.width << rec.length;
+}
