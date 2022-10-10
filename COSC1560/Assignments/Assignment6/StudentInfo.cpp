@@ -35,7 +35,10 @@ struct Students
 //*******************************************************************************************************
 
 void handler();
-void editStudents();
+void editStudents(Students [], int);
+void viewStudent(Students [], int);
+void countStudent(Students [], int);
+void deleteStudent(Students [], int);
 
 //*******************************************************************************************************
 
