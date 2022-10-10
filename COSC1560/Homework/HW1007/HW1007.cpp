@@ -38,11 +38,12 @@ struct SavingsAcct
 
 int main()
 {
+    // Problem 11.2
     SavingsAcct myAcct = {
-            "My savings account",
-            1000000.0,
-            0.019,
-            875000
+            "ACZ42137-B12-7",
+            4512.59,
+            0.04,
+            4217.07
     };
 
     return 0;
