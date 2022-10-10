@@ -28,22 +28,22 @@ using namespace std;
 // Problem 11.1
 struct SavingsAcct
 {
-	string acctNum;
-	double balance;
-	double interestRate;
-	double avgMonthlyBalance;
+    string acctNum;
+    double balance;
+    double interestRate;
+    double avgMonthlyBalance;
 };
 
 //*******************************************************************************************************
 
 int main()
 {
-	SavingsAcct myAcct = {
-			"My savings account",
-			1000000.0,
-			0.019,
-			875000
-	};
+    SavingsAcct myAcct = {
+            "My savings account",
+            1000000.0,
+            0.019,
+            875000
+    };
 
-	return 0;
+    return 0;
 }
