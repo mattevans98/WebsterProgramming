@@ -21,13 +21,14 @@
 //*******************************************************************************************************
 
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 //*******************************************************************************************************
 
 struct Students
 {
-    char *name[81];
+    char name[81];
     int id;
     double grade;
 };
@@ -106,4 +107,16 @@ void handler()
 void editStudent(Students students[], int size)
 {
     int indexNum;
+
+    cout << "Please enter an index: ";
+    cin >> indexNum;
+    cout << "Please enter a name: ";
+    cin.getline(students[indexNum].name, 81);
+    cout << "Please enter an ID: ";
+    cin >> students[indexNum].id;
+    cout << "Please enter a grade: ";
+    cin >> students[indexNum].grade;
 }
+
+//*******************************************************************************************************
+
