@@ -80,6 +80,7 @@ void handler()
         cout << "5) Quit" << endl;
         cout << "Please choose one of the options: ";
         cin >> choice;
+        cout << endl;
 
         switch (choice)
         {
@@ -93,7 +94,7 @@ void handler()
                 countStudent(students, SIZE);
                 break;
             case 4:
-                //deleteStudent(students, SIZE);
+                deleteStudent(students, SIZE);
                 break;
             case 5:
                 cout << "Finished!" << endl;
@@ -119,6 +120,7 @@ void editStudent(Students students[], int size)
     cin >> students[indexNum].id;
     cout << "Please enter a grade: ";
     cin >> students[indexNum].grade;
+    cout << endl;
 }
 
 //*******************************************************************************************************
@@ -127,7 +129,10 @@ void viewStudent(const Students students[], const int size)
 {
     for (int i = 0; i < size; ++i)
         if (students[i].name != "-")
-            cout << students[i].id << ". " << students[i].name << " " << students[i].grade << endl;
+            cout << students[i].id << ". " << students[i].name << " " <<
+                 students[i].grade << endl;
+
+    cout << endl;
 }
 
 //*******************************************************************************************************
@@ -139,7 +144,111 @@ void countStudent(const Students students[], int size)
         if (students[i].name != "-")
             count++;
     cout << "There " << (count == 1 ? "is " : "are ") << count
-         << (count == 1 ? " student" : " students") << endl;
+         << (count == 1 ? " student" : " students") << endl << endl;
 }
 
 //*******************************************************************************************************
+
+void deleteStudent(Students students[], int size)
+{
+    int indexNum;
+
+    cout << "Enter an index: ";
+    cin >> indexNum;
+    while (indexNum > 9 || indexNum < 1)
+    {
+        cout << "There is no such student on that index. Please re-enter: ";
+        cin >> indexNum;
+    }
+    students[indexNum].name = "-";
+    students[indexNum].id = 0;
+    students[indexNum].grade = 0;
+    cout << "deleted" << endl << endl;
+}
+
+//*******************************************************************************************************
+
+// Output
+
+/*
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 1
+
+Please enter an index: 1
+Please enter a name: John Doe
+Please enter an ID: 1001
+Please enter a grade: 90
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 1
+
+Please enter an index: 2
+Please enter a name: Jane Doe
+Please enter an ID: 1002
+Please enter a grade: 79
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 2
+
+1001. John Doe 90
+1002. Jane Doe 79
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 3
+
+There are 2 students
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 4
+
+Enter an index: 0
+There is no such student on that index. Please re-enter: 2
+deleted
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 2
+
+1001. John Doe 90
+
+************************************************************
+1) Edit a student
+2) View student's info
+3) Display a count of how many students are in the list.
+4) Delete a student
+5) Quit
+Please choose one of the options: 5
+
+Finished!
+
+Process finished with exit code 0
+*/
