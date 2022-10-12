@@ -20,19 +20,19 @@ struct Course
 
 int main()
 {
-    Course c;
-    c.size = 10;
-    c.p = new Student[c.size];
+    Course myCourse;
+    cin >> myCourse.size;
+    myCourse.p = new Student[myCourse.size];
 
-    for (int i = 0; i < c.size; i++)
+    for (int i = 0; i < myCourse.size; i++)
     {
-        c.p[i].name = "-";
-        c.p[i].id = 0;
-        c.p[i].grade = 0;
+        getline(cin, myCourse.p[i].name);
+        cin >> myCourse.p[i].id;
+        cin >> myCourse.p[i].grade;
     }
 
-    delete[] c.p;
-    c.p = nullptr;
+    delete[] myCourse.p;
+    myCourse.p = nullptr;
 
     return 0;
 }
