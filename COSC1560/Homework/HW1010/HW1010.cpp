@@ -63,3 +63,16 @@ void display(Employee emps[], int size)
         cout << emps[i].name << " worked " << emps[i].hours << " hours at $" << emps[i].hourly
              << " per hour." << endl;
 }
+
+//*******************************************************************************************************
+
+// Output:
+/*
+John Smith worked 42 hours at $25 per hour.
+Jane Doe worked 20 hours at $30 per hour.
+Joe Blow worked 30 hours at $18 per hour.
+John Doe worked 35 hours at $20 per hour.
+Jane Smith worked 45 hours at $15 per hour.
+
+Process finished with exit code 0
+*/
