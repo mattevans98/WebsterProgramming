@@ -26,9 +26,11 @@ using namespace std;
 
 //*******************************************************************************************************
 
+const int STRING_SIZE = 81;
+
 struct Students
 {
-    string name;
+    char name[STRING_SIZE];
     int id;
     double grade;
 };
@@ -115,7 +117,7 @@ void editStudent(Students students[], int size)
     cin >> indexNum;
     cout << "Please enter a name: ";
     cin.ignore();
-    getline(cin, students[indexNum].name, '\n');
+    cin.getline(students[indexNum].name, 81);
     cout << "Please enter an ID: ";
     cin >> students[indexNum].id;
     cout << "Please enter a grade: ";
@@ -128,7 +130,7 @@ void editStudent(Students students[], int size)
 void viewStudent(const Students students[], const int size)
 {
     for (int i = 0; i < size; ++i)
-        if (students[i].name != "-")
+        if (strcmp(students[i].name, "-") != 0)
             cout << students[i].id << ". " << students[i].name << " " <<
                  students[i].grade << endl;
 
@@ -141,7 +143,7 @@ void countStudent(const Students students[], int size)
 {
     int count = 0;
     for (int i = 0; i < size; ++i)
-        if (students[i].name != "-")
+        if (strcmp(students[i].name, "-") != 0)
             count++;
     cout << "There " << (count == 1 ? "is " : "are ") << count
          << (count == 1 ? " student" : " students") << endl << endl;
@@ -160,7 +162,7 @@ void deleteStudent(Students students[], int size)
         cout << "There is no such student on that index. Please re-enter: ";
         cin >> indexNum;
     }
-    students[indexNum].name = "-";
+    strcpy(students[indexNum].name, "-");
     students[indexNum].id = 0;
     students[indexNum].grade = 0;
     cout << "deleted" << endl << endl;
