@@ -21,9 +21,7 @@
 //*******************************************************************************************************
 
 #include <iostream>
-#include <cstring>
 #include <string>
-#include <cctype>
 using namespace std;
 
 //*******************************************************************************************************
@@ -39,8 +37,8 @@ struct Students
 
 void handler();
 void editStudent(Students [], int);
-void viewStudent(Students [], int);
-void countStudent(Students [], int);
+void viewStudent(const Students [], int);
+void countStudent(const Students [], int);
 void deleteStudent(Students [], int);
 
 //*******************************************************************************************************
@@ -92,7 +90,7 @@ void handler()
                 viewStudent(students, SIZE);
                 break;
             case 3:
-                //countStudent(students, SIZE);
+                countStudent(students, SIZE);
                 break;
             case 4:
                 //deleteStudent(students, SIZE);
@@ -125,11 +123,23 @@ void editStudent(Students students[], int size)
 
 //*******************************************************************************************************
 
-void viewStudent(Students students[], const int size)
+void viewStudent(const Students students[], const int size)
 {
     for (int i = 0; i < size; ++i)
         if (students[i].name != "-")
             cout << students[i].id << ". " << students[i].name << " " << students[i].grade << endl;
+}
+
+//*******************************************************************************************************
+
+void countStudent(const Students students[], int size)
+{
+    int count = 0;
+    for (int i = 0; i < size; ++i)
+        if (students[i].name != "-")
+            count++;
+    cout << "There " << (count == 1 ? "is " : "are ") << count
+         << (count == 1 ? " student" : " students") << endl;
 }
 
 //*******************************************************************************************************
