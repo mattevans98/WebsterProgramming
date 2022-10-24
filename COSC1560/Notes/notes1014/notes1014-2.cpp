@@ -8,14 +8,14 @@ struct MyString
     char *str;
     int length;
 
-    MyString()
+    MyString()                          // constructor
     {
-        str = new char[1];
-        str[0] = '\0';
-        length = 0;
+        length = 5;
+        str = new char[length];
+        strcpy(str, "ABC");
     }
 
-    ~MyString()
+    ~MyString()                         // destructor
     {
         delete[] str;
     }
@@ -26,8 +26,7 @@ struct MyString
 int main()
 {
     MyString obj;
-    obj.length = 5;
-    obj.str = new char[obj.length];
+    cout << obj.str << endl;
 
     return 0;
 }
