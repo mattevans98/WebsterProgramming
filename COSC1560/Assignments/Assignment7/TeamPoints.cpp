@@ -89,6 +89,7 @@ void getScores(Team &aTeam)
         cout << "Points: ";
         cin >> aTeam.ptrTeamMember[i].points;
         cin.ignore();
+        cout << endl << endl;
     }
 }
 
@@ -113,9 +114,9 @@ void displayTeamInfo(const Team &team)
 
     for (int i = 0; i < team.numOfTeamMembers; i++)
     {
-        cout << left << setw(25) << team.ptrTeamMember[i].name;
-        cout << setw(15) << team.ptrTeamMember[i].playerNumber;
-        cout << setw(15) << team.ptrTeamMember[i].points << endl;
+        cout << left << setw(20) << team.ptrTeamMember[i].name;
+        cout << setw(10) << team.ptrTeamMember[i].playerNumber;
+        cout << setw(10) << team.ptrTeamMember[i].points << endl;
     }
 
     cout << right << string(50, '*') << endl;
@@ -129,3 +130,38 @@ void freeMemory(Team &team)
     delete[] team.ptrTeamMember;
     team.ptrTeamMember = nullptr;
 }
+
+//*******************************************************************************************************
+
+// Output:
+/*
+Enter the team name: Gryffindor
+Enter the number of team members: 3
+Enter the information for team member 1:
+Name: Ginny
+Number: 1
+Points: 100
+
+
+Enter the information for team member 2:
+Name: Fred
+Number: 2
+Points: 350
+
+
+Enter the information for team member 3:
+Name: Oliver
+Number: 3
+Points: 200
+
+
+**************************************************
+Gryffindor
+Ginny               1         100
+Fred                2         350
+Oliver              3         200
+**************************************************
+216.667
+
+Process finished with exit code 0
+*/
