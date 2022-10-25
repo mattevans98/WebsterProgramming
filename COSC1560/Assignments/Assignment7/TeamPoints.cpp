@@ -59,3 +59,36 @@ int main()
 }
 
 //*******************************************************************************************************
+
+void handler()
+{
+    Team aTeam;
+    getScores(aTeam);
+    //displayTeamInfo(aTeam);
+    //freeMemory(aTeam);
+}
+
+//*******************************************************************************************************
+
+void getScores(Team &aTeam)
+{
+    cout << "Enter the team name: ";
+    cin.getline(aTeam.teamName, STRING_SIZE);
+    cout << "Enter the number of team members: ";
+    cin >> aTeam.numOfTeamMembers;
+    cin.ignore();
+    aTeam.ptrTeamMember = new Player[aTeam.numOfTeamMembers];
+    for (int i = 0; i < aTeam.numOfTeamMembers; i++)
+    {
+        cout << "Enter the information for team member " << i + 1 << ": " << endl;
+        cout << "Name: ";
+        cin.getline(aTeam.ptrTeamMember[i].name, STRING_SIZE);
+        cout << "Number: ";
+        cin >> aTeam.ptrTeamMember[i].playerNumber;
+        cout << "Points: ";
+        cin >> aTeam.ptrTeamMember[i].points;
+        cin.ignore();
+    }
+}
+
+//*******************************************************************************************************
