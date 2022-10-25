@@ -21,6 +21,7 @@
 //*******************************************************************************************************
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //*******************************************************************************************************
@@ -64,8 +65,8 @@ void handler()
 {
     Team aTeam;
     getScores(aTeam);
-    //displayTeamInfo(aTeam);
-    //freeMemory(aTeam);
+    displayTeamInfo(aTeam);
+    freeMemory(aTeam);
 }
 
 //*******************************************************************************************************
@@ -92,3 +93,39 @@ void getScores(Team &aTeam)
 }
 
 //*******************************************************************************************************
+
+double calculateAverage(const Team &team)
+{
+    double total = 0;
+
+    for (int i = 0; i < team.numOfTeamMembers; i++)
+        total += team.ptrTeamMember[i].points;
+
+    return total / team.numOfTeamMembers;
+}
+
+//*******************************************************************************************************
+
+void displayTeamInfo(const Team &team)
+{
+    cout << string(50, '*') << endl;
+    cout << team.teamName << endl;
+
+    for (int i = 0; i < team.numOfTeamMembers; i++)
+    {
+        cout << left << setw(25) << team.ptrTeamMember[i].name;
+        cout << setw(15) << team.ptrTeamMember[i].playerNumber;
+        cout << setw(15) << team.ptrTeamMember[i].points << endl;
+    }
+
+    cout << right << string(50, '*') << endl;
+    cout << calculateAverage(team) << endl;
+}
+
+//*******************************************************************************************************
+
+void freeMemory(Team &team)
+{
+    delete[] team.ptrTeamMember;
+    team.ptrTeamMember = nullptr;
+}
