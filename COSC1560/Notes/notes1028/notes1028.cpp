@@ -39,6 +39,7 @@ int main()
 //            sum += num;
 //        }
 //        cout << sum << endl;
+//        while (fin.getline(line, 80)){}
 
         fin >> num;
         while (!fin.fail()) // while (!fin.eof())
