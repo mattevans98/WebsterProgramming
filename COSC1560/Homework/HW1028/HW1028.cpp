@@ -26,3 +26,30 @@ using namespace std;
 
 //*******************************************************************************************************
 
+void copyToFile(ifstream &, ofstream &);
+
+//*******************************************************************************************************
+
+int main()
+{
+    ifstream fin;
+    ofstream fout;
+    fin.open("names.txt");
+    fout.open("names_copy.txt");
+    copyToFile(fin, fout);
+    fin.close();
+    fout.close();
+
+    return 0;
+}
+
+//*******************************************************************************************************
+
+void copyToFile(ifstream &fin, ofstream &fout)
+{
+    string name;
+    while (fin >> name)
+    {
+        fout << name << endl;
+    }
+}
