@@ -74,3 +74,16 @@ void displayLastFive(ifstream &fin)
     for (int i = count - 5; i <= count && fin.getline(name, STRING_SIZE); i++)
         cout << i + 1 << ".) " << name << endl;
 }
+
+//*******************************************************************************************************
+
+// Output:
+/*
+46.) Emily Santos
+47.) Cynthia Burton
+48.) Noah Moreno
+49.) Glenn Barnes
+50.) Nancy Hicks
+
+Process finished with exit code 0
+*/
