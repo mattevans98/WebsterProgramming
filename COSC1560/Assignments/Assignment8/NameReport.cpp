@@ -149,3 +149,18 @@ int count(ifstream &fin)
 
 //*******************************************************************************************************
 
+void copyToFile(ifstream &fin, ofstream &fout)
+{
+    fin.clear();
+    fin.seekg(0L, ios::beg);
+    fout.open("names_copy.txt");
+
+    string name;
+
+    while (fin >> name)
+        fout << name << endl;
+
+    fout.close();
+}
+
+//*******************************************************************************************************
