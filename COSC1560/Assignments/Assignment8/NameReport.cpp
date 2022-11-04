@@ -161,6 +161,38 @@ void copyToFile(ifstream &fin, ofstream &fout)
         fout << name << endl;
 
     fout.close();
+
+    cout << "Done!" << endl;
+}
+
+//*******************************************************************************************************
+
+void search(ifstream &fin)
+{
+    fin.clear();
+    fin.seekg(0L, ios::beg);
+    string name;
+    string searchName;
+    bool found = false;
+    int lineNum = 1;
+
+    cout << "Enter a name so I can search for it: ";
+    cin >> searchName;
+
+    while (!found && fin >> name)
+    {
+        if (name == searchName)
+            found = true;
+        else
+            lineNum++;
+    }
+
+    cout << "Found on line: ";
+
+    if (found)
+        cout << lineNum << endl;
+    else
+        cout << "Not found" << endl;
 }
 
 //*******************************************************************************************************
