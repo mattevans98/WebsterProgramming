@@ -69,26 +69,26 @@ int getChoice()
 
 //*******************************************************************************************************
 
-void handleMenu(ifstream &inFile)
+void handleMenu(ifstream &fin)
 {
     ofstream fout;
 
     switch (getChoice())
     {
         case 1:
-            displayFirstFive(inFile);
+            displayFirstFive(fin);
             break;
         case 2:
-            displayLastFive(inFile);
+            displayLastFive(fin);
             break;
         case 3:
-            cout << "There are " << count(inFile) << " names" << endl;
+            cout << "There are " << count(fin) << " names" << endl;
             break;
         case 4:
-            copyToFile(inFile, fout);
+            copyToFile(fin, fout);
             break;
         case 5:
-            search(inFile);
+            search(fin);
             break;
         case 6:
             cout << "Over!" << endl;
@@ -98,6 +98,21 @@ void handleMenu(ifstream &inFile)
     }
 
     fout.close();
+}
+
+//*******************************************************************************************************
+
+void displayFirstFive(ifstream &fin)
+{
+    fin.clear();
+    fin.seekg(0L, ios::beg);
+    string name;
+
+    for (int i = 0; i < 5; i++)
+    {
+        fin >> name;
+        cout << name << endl;
+    }
 }
 
 //*******************************************************************************************************
