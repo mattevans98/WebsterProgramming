@@ -26,6 +26,10 @@ using namespace std;
 
 //*******************************************************************************************************
 
+const int SIZE = 81;
+
+//*******************************************************************************************************
+
 int getChoice();
 void handleMenu(ifstream &);
 void displayFirstFive(ifstream &);
@@ -40,9 +44,13 @@ int main()
 {
     ifstream fin;
     fin.open("names.txt");
+    if (fin.fail())
+    {
+        cout << "Error opening file" << endl;
+        return 1;
+    }
 
-    while (getChoice() != 6)
-        handleMenu(fin);
+    handleMenu(fin);
 
     fin.close();
 
@@ -54,7 +62,7 @@ int main()
 int getChoice()
 {
     int choice;
-    cout << string(40, '*');
+    cout << string(40, '*') << endl;
     cout << "1. Display the first five names" << endl;
     cout << "2. Display the last five names" << endl;
     cout << "3. Count the number of names" << endl;
@@ -72,29 +80,34 @@ int getChoice()
 void handleMenu(ifstream &fin)
 {
     ofstream fout;
+    int choice = 0;
 
-    switch (getChoice())
+    while (choice != 6)
     {
-        case 1:
-            displayFirstFive(fin);
-            break;
-        case 2:
-            displayLastFive(fin);
-            break;
-        case 3:
-            cout << "There are " << count(fin) << " names" << endl;
-            break;
-        case 4:
-            copyToFile(fin, fout);
-            break;
-        case 5:
-            search(fin);
-            break;
-        case 6:
-            cout << "Over!" << endl;
-            break;
-        default:
-            cout << "Invalid choice." << endl;
+        choice = getChoice();
+        switch (choice)
+        {
+            case 1:
+                displayFirstFive(fin);
+                break;
+            case 2:
+                displayLastFive(fin);
+                break;
+            case 3:
+                cout << "There are " << count(fin) << " names" << endl;
+                break;
+            case 4:
+                copyToFile(fin, fout);
+                break;
+            case 5:
+                search(fin);
+                break;
+            case 6:
+                cout << "Over!" << endl;
+                break;
+            default:
+                cout << "Invalid choice." << endl;
+        }
     }
 
     fout.close();
@@ -106,11 +119,11 @@ void displayFirstFive(ifstream &fin)
 {
     fin.clear();
     fin.seekg(0L, ios::beg);
-    string name;
+    char name[SIZE];
 
     for (int i = 0; i < 5; i++)
     {
-        fin >> name;
+        fin.getline(name, SIZE);
         cout << name << endl;
     }
 }
@@ -119,17 +132,18 @@ void displayFirstFive(ifstream &fin)
 
 void displayLastFive(ifstream &fin)
 {
+
+    char name[SIZE];
+    int numOfLines = count(fin);
+
     fin.clear();
-    fin.seekg(0L, ios::end);
+    fin.seekg(0L, ios::beg);
 
-    string name;
+    for (int i = 0; i < numOfLines - 5; i++)
+        fin.getline(name, SIZE);
 
-    for (int i = 0; i < 5; i++)
-    {
-        fin.seekg(-1L, ios::cur);
-        fin >> name;
-        cout << name << endl;
-    }
+    for (int i = numOfLines - 5; i <= numOfLines && fin.getline(name, SIZE); i++)
+        cout << i + 1 << ".) " << name << endl;
 }
 
 //*******************************************************************************************************
@@ -138,11 +152,14 @@ int count(ifstream &fin)
 {
     fin.clear();
     fin.seekg(0L, ios::beg);
-    string name;
+    char name[SIZE];
     int count = 0;
 
-    while (fin >> name)
+    while (!fin.eof())
+    {
+        fin.getline(name, SIZE);
         count++;
+    }
 
     return count;
 }
@@ -157,8 +174,12 @@ void copyToFile(ifstream &fin, ofstream &fout)
 
     string name;
 
-    while (fin >> name)
+    while (!fin.eof())
+    {
+        getline(fin, name);
         fout << name << endl;
+    }
+
 
     fout.close();
 
@@ -171,26 +192,26 @@ void search(ifstream &fin)
 {
     fin.clear();
     fin.seekg(0L, ios::beg);
-    string name;
-    string searchName;
+    char name[SIZE];
+    char searchName[SIZE];
     bool found = false;
     int lineNum = 1;
 
     cout << "Enter a name so I can search for it: ";
-    cin >> searchName;
+    cin.ignore();
+    cin.getline(searchName, SIZE);
 
-    while (!found && fin >> name)
+    while (!found && !fin.eof())
     {
-        if (name == searchName)
+        fin.getline(name, SIZE);
+        if (strcmp(name, searchName) == 0)
             found = true;
         else
             lineNum++;
     }
 
-    cout << "Found on line: ";
-
     if (found)
-        cout << lineNum << endl;
+        cout << "Found on line: " << lineNum << endl;
     else
         cout << "Not found" << endl;
 }
