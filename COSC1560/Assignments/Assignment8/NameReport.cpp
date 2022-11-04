@@ -124,15 +124,16 @@ void displayFirstFive(ifstream &fin)
     for (int i = 0; i < 5; i++)
     {
         fin.getline(name, SIZE);
-        cout << name << endl;
+        cout << i + 1 << ".) " << name << endl;
     }
+
+    cout << endl;
 }
 
 //*******************************************************************************************************
 
 void displayLastFive(ifstream &fin)
 {
-
     char name[SIZE];
     int numOfLines = count(fin);
 
@@ -144,6 +145,8 @@ void displayLastFive(ifstream &fin)
 
     for (int i = numOfLines - 5; i <= numOfLines && fin.getline(name, SIZE); i++)
         cout << i + 1 << ".) " << name << endl;
+
+    cout << endl;
 }
 
 //*******************************************************************************************************
@@ -158,7 +161,8 @@ int count(ifstream &fin)
     while (!fin.eof())
     {
         fin.getline(name, SIZE);
-        count++;
+        if (strcmp(name, "") != 0)
+            count++;
     }
 
     return count;
@@ -217,3 +221,84 @@ void search(ifstream &fin)
 }
 
 //*******************************************************************************************************
+
+// Output:
+/*
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 1
+1.) Woodrow Holloway
+2.) Andy Rodgers
+3.) Jean Barker
+4.) Lynda Hernandez
+5.) Carol Diaz
+
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 2
+46.) Emily Santos
+47.) Cynthia Burton
+48.) Noah Moreno
+49.) Glenn Barnes
+50.) Nancy Hicks
+
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 3
+There are 50 names
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 4
+Done!
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 5
+Enter a name so I can search for it: Carol Diaz
+Found on line: 5
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 5
+Enter a name so I can search for it: John Doe
+Not found
+****************************************
+1. Display the first five names
+2. Display the last five names
+3. Count the number of names
+4. Copy Names to names_copy.txt
+5. Search for a name
+6. Quit
+Enter your choice: 6
+Over!
+
+Process finished with exit code 0
+*/
