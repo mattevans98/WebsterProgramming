@@ -38,20 +38,13 @@ void search(ifstream &);
 
 int main()
 {
-    ifstream inFile;
-    ofstream outFile;
-    inFile.open("names.txt");
-    outFile.open("names2.txt");
-    int choice;
+    ifstream fin;
+    fin.open("names.txt");
 
-    do
-    {
-        choice = getChoice();
-        handleMenu(inFile);
-    } while (choice != 6);
+    while (getChoice() != 6)
+        handleMenu(fin);
 
-    inFile.close();
-    outFile.close();
+    fin.close();
 
     return 0;
 }
@@ -76,3 +69,35 @@ int getChoice()
 
 //*******************************************************************************************************
 
+void handleMenu(ifstream &inFile)
+{
+    ofstream fout;
+
+    switch (getChoice())
+    {
+        case 1:
+            displayFirstFive(inFile);
+            break;
+        case 2:
+            displayLastFive(inFile);
+            break;
+        case 3:
+            cout << "There are " << count(inFile) << " names" << endl;
+            break;
+        case 4:
+            copyToFile(inFile, fout);
+            break;
+        case 5:
+            search(inFile);
+            break;
+        case 6:
+            cout << "Over!" << endl;
+            break;
+        default:
+            cout << "Invalid choice." << endl;
+    }
+
+    fout.close();
+}
+
+//*******************************************************************************************************
