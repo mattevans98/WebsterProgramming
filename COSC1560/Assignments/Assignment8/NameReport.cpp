@@ -54,7 +54,7 @@ int main()
 int getChoice()
 {
     int choice;
-
+    cout << string(40, '*');
     cout << "1. Display the first five names" << endl;
     cout << "2. Display the last five names" << endl;
     cout << "3. Count the number of names" << endl;
@@ -110,6 +110,23 @@ void displayFirstFive(ifstream &fin)
 
     for (int i = 0; i < 5; i++)
     {
+        fin >> name;
+        cout << name << endl;
+    }
+}
+
+//*******************************************************************************************************
+
+void displayLastFive(ifstream &fin)
+{
+    fin.clear();
+    fin.seekg(0L, ios::end);
+
+    string name;
+
+    for (int i = 0; i < 5; i++)
+    {
+        fin.seekg(-1L, ios::cur);
         fin >> name;
         cout << name << endl;
     }
