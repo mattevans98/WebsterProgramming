@@ -57,3 +57,22 @@ int main()
 }
 
 //*******************************************************************************************************
+
+int getChoice()
+{
+    int choice;
+
+    cout << "1. Display the first five names" << endl;
+    cout << "2. Display the last five names" << endl;
+    cout << "3. Count the number of names" << endl;
+    cout << "4. Copy Names to names_copy.txt" << endl;
+    cout << "5. Search for a name" << endl;
+    cout << "6. Quit" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    return choice;
+}
+
+//*******************************************************************************************************
+
