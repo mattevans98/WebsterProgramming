@@ -29,3 +29,30 @@ using namespace std;
 const int STRING_SIZE = 51;
 
 //*******************************************************************************************************
+
+struct Student
+{
+    char name[STRING_SIZE];
+    char address[STRING_SIZE];
+    double gpa;
+    int id;
+};
+
+//*******************************************************************************************************
+
+int getChoice();
+void handleMenu();
+void enterRecord();
+void displayOneRecord();
+int countRecord();
+void displayAllRecords();
+
+//*******************************************************************************************************
+
+int main()
+{
+    handleMenu();
+    return 0;
+}
+
+//*******************************************************************************************************
