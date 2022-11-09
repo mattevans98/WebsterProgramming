@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 //*******************************************************************************************************
@@ -53,6 +54,20 @@ int main()
 {
     handleMenu();
     return 0;
+}
+
+//*******************************************************************************************************
+
+void handleMenu()
+{
+    cout << string(STRING_SIZE, '*') << endl;
+    cout << setw(5) << left << "1." << "Enter new records into the file." << endl;
+    cout << setw(5) << "2." << setw(5) <<
+         "Search for a particular Student record and display it." << endl;
+    cout << setw(5) << "3." << setw(5) << "Count student records." << endl;
+    cout << setw(5) << "4." << setw(5) << "Display all records." << endl;
+    cout << setw(5) << "5." << setw(5) << "Quit." << endl;
+    cout << endl;
 }
 
 //*******************************************************************************************************
