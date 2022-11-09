@@ -28,7 +28,7 @@ using namespace std;
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInput(const T &, T, T);
+bool validateInput(const T, T, T);
 
 const int STRING_SIZE = 51;
 
@@ -46,6 +46,7 @@ struct Student
 
 int getChoice();
 void handleMenu();
+void callChoice(const int);
 void enterRecord();
 void displayOneRecord();
 int countRecord();
@@ -62,7 +63,7 @@ int main()
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInput(const T &input, const T MIN, const T MAX)
+bool validateInput(const T input, const T MIN, const T MAX)
 {
     bool isValid;
     if (input < MIN || input > MAX)
@@ -72,6 +73,8 @@ bool validateInput(const T &input, const T MIN, const T MAX)
 
     return isValid;
 }
+
+//*******************************************************************************************************
 
 void handleMenu()
 {
@@ -86,6 +89,8 @@ void handleMenu()
     cout << endl;
 
     choice = getChoice();
+
+    callChoice(choice);
 }
 
 //*******************************************************************************************************
@@ -105,6 +110,31 @@ int getChoice()
     }
 
     return choice;
+}
+
+//*******************************************************************************************************
+
+void callChoice(const int choice)
+{
+    switch (choice)
+    {
+        case 1:
+            enterRecord();
+            break;
+        case 2:
+            displayOneRecord();
+            break;
+        case 3:
+            countRecord();
+            break;
+        case 4:
+            displayAllRecords();
+            break;
+        case 5:
+            break;
+        default:
+            cout << "Choice call was invalid." << endl;
+    }
 }
 
 //*******************************************************************************************************
