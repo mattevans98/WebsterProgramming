@@ -189,3 +189,24 @@ void displayOneRecord()
 }
 
 //*******************************************************************************************************
+
+int countRecord()
+{
+    fstream file("record.dat", ios::in | ios::binary);
+    Student s;
+    int count = 0;
+
+    if (!file.fail())
+    {
+        file.seekg(0, ios::beg);
+        while (file.read(reinterpret_cast<char *>(&s), sizeof(s)))
+            count++;
+        file.close();
+    }
+    else
+        cout << "File failed to open." << endl;
+
+    return count;
+}
+
+//*******************************************************************************************************
