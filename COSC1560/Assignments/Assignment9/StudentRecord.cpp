@@ -79,18 +79,21 @@ bool validateInput(const T input, const T MIN, const T MAX)
 void handleMenu()
 {
     int choice;
-    cout << string(STRING_SIZE, '*') << endl;
-    cout << setw(5) << left << "1." << "Enter new records into the file." << endl;
-    cout << setw(5) << "2." << setw(5) <<
-         "Search for a particular Student record and display it." << endl;
-    cout << setw(5) << "3." << setw(5) << "Count student records." << endl;
-    cout << setw(5) << "4." << setw(5) << "Display all records." << endl;
-    cout << setw(5) << "5." << setw(5) << "Quit." << endl;
-    cout << endl;
 
-    choice = getChoice();
-
-    callChoice(choice);
+    do
+    {
+        cout << string(STRING_SIZE, '*') << endl;
+        cout << setw(5) << left << "1." << "Enter new records into the file." << endl;
+        cout << setw(5) << "2." << setw(5) <<
+             "Search for a particular Student record and display it." << endl;
+        cout << setw(5) << "3." << setw(5) << "Count student records." << endl;
+        cout << setw(5) << "4." << setw(5) << "Display all records." << endl;
+        cout << setw(5) << "5." << setw(5) << "Quit." << endl;
+        cout << endl;
+        choice = getChoice();
+        callChoice(choice);
+        cout << endl;
+    } while (choice != 5);
 }
 
 //*******************************************************************************************************
@@ -114,7 +117,7 @@ int getChoice()
 
 //*******************************************************************************************************
 
-void callChoice(const int choice)
+void callChoice(int choice)
 {
     switch (choice)
     {
@@ -125,15 +128,13 @@ void callChoice(const int choice)
             displayOneRecord();
             break;
         case 3:
-            countRecord();
+            cout << "There are " << countRecord() << " student records in the file." << endl;
             break;
         case 4:
             displayAllRecords();
             break;
-        case 5:
-            break;
         default:
-            cout << "Choice call was invalid." << endl;
+            cout << "Goodbye" << endl;
     }
 }
 
@@ -144,6 +145,7 @@ void enterRecord()
     fstream file("record.dat", ios::app | ios::binary);
     Student s;
 
+    cin.ignore();
     cout << "Enter Student name: ";
     cin.getline(s.name, STRING_SIZE);
     cout << "Enter Student address: ";
@@ -164,24 +166,21 @@ void displayOneRecord()
 {
     fstream file("record.dat", ios::in | ios::binary);
     Student s;
-    int id;
+    long size = sizeof(s);
+    int record;
 
     if (!file.fail())
     {
-        cout << "Enter Student ID: ";
-        cin >> id;
+        cout << "Enter record number: ";
+        cin >> record;
 
-        file.seekg(0, ios::beg);
-        while (file.read(reinterpret_cast<char *>(&s), sizeof(s)))
-        {
-            if (s.id == id)
-            {
-                cout << "Student name: " << s.name << endl;
-                cout << "Student address: " << s.address << endl;
-                cout << "Student ID: " << s.id << endl;
-                cout << "Student GPA: " << s.gpa << endl;
-            }
-        }
+        file.seekg(record * size, ios::beg);
+        file.read(reinterpret_cast<char *>(&s), size);
+        cout << "Name: " << s.name << endl;
+        cout << "Address: " << s.address << endl;
+        cout << "ID: " << s.id << endl;
+        cout << "GPA: " << s.gpa << endl;
+        cout << endl;
         file.close();
     }
     else
@@ -233,3 +232,113 @@ void displayAllRecords()
 }
 
 //*******************************************************************************************************
+
+// Output:
+
+/*
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 3
+There are 8 student records in the file.
+
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 1
+Enter Student name: Jane Doe
+Enter Student address: 520 Gorlock Ave.
+Student ID: 10001
+Enter GPA: 2.7
+
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 3
+There are 9 student records in the file.
+
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 2
+Enter record number: 3
+Name: Robert Rodriguez
+Address: 920 East Webster Ave.
+ID: 93197
+GPA: 2.5
+
+
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 4
+Student name: John Doe
+Student address: 52 Webster Dr.
+Student ID: 34124
+Student GPA: 3.4
+Student name: Thomas Williams
+Student address: 140 Garden Ave.
+Student ID: 29521
+Student GPA: 3.1
+Student name: Jane Adams
+Student address: 1678 Lockwood Ave.
+Student ID: 42124
+Student GPA: 2.9
+Student name: Robert Rodriguez
+Student address: 920 East Webster Ave.
+Student ID: 93197
+Student GPA: 2.5
+Student name: Janet Doe
+Student address: 431 Conrrett Dr.
+Student ID: 10051
+Student GPA: 3.7
+Student name: Jane Doe
+Student address: 520 Gorlock Ave.
+Student ID: 10001
+Student GPA: 2.7
+Student name: Jane Doe
+Student address: 520 Gorlock Ave.
+Student ID: 10001
+Student GPA: 2.7
+Student name: Jane Doe
+Student address: 520 Gorlock Ave.
+Student ID: 10001
+Student GPA: 2.7
+Student name: Jane Doe
+Student address: 520 Gorlock Ave.
+Student ID: 10001
+Student GPA: 2.7
+
+***************************************************
+1.   Enter new records into the file.
+2.   Search for a particular Student record and display it.
+3.   Count student records.
+4.   Display all records.
+5.   Quit.
+
+Please enter: 5
+Goodbye
+
+
+Process finished with exit code 0
+*/
