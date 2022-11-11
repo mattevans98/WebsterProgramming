@@ -46,7 +46,7 @@ struct Student
 
 int getChoice();
 void handleMenu();
-void callChoice(const int);
+void callChoice(int);
 void enterRecord();
 void displayOneRecord();
 int countRecord();
@@ -135,6 +135,27 @@ void callChoice(const int choice)
         default:
             cout << "Choice call was invalid." << endl;
     }
+}
+
+//*******************************************************************************************************
+
+void enterRecord()
+{
+    fstream file("record.dat", ios::app | ios::binary);
+    Student s;
+
+    cout << "Enter Student name: ";
+    cin.getline(s.name, STRING_SIZE);
+    cout << "Enter Student address: ";
+    cin.getline(s.address, STRING_SIZE);
+    cout << "Student ID: ";
+    cin >> s.id;
+    cout << "Enter GPA: ";
+    cin >> s.gpa;
+
+    file.write(reinterpret_cast<char *>(&s), sizeof(s));
+
+    file.close();
 }
 
 //*******************************************************************************************************
