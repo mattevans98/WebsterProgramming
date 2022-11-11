@@ -210,3 +210,26 @@ int countRecord()
 }
 
 //*******************************************************************************************************
+
+void displayAllRecords()
+{
+    fstream file("record.dat", ios::in | ios::binary);
+    Student s;
+
+    if (!file.fail())
+    {
+        file.seekg(0, ios::beg);
+        while (file.read(reinterpret_cast<char *>(&s), sizeof(s)))
+        {
+            cout << "Student name: " << s.name << endl;
+            cout << "Student address: " << s.address << endl;
+            cout << "Student ID: " << s.id << endl;
+            cout << "Student GPA: " << s.gpa << endl;
+        }
+        file.close();
+    }
+    else
+        cout << "File failed to open." << endl;
+}
+
+//*******************************************************************************************************
