@@ -159,3 +159,33 @@ void enterRecord()
 }
 
 //*******************************************************************************************************
+
+void displayOneRecord()
+{
+    fstream file("record.dat", ios::in | ios::binary);
+    Student s;
+    int id;
+
+    if (!file.fail())
+    {
+        cout << "Enter Student ID: ";
+        cin >> id;
+
+        file.seekg(0, ios::beg);
+        while (file.read(reinterpret_cast<char *>(&s), sizeof(s)))
+        {
+            if (s.id == id)
+            {
+                cout << "Student name: " << s.name << endl;
+                cout << "Student address: " << s.address << endl;
+                cout << "Student ID: " << s.id << endl;
+                cout << "Student GPA: " << s.gpa << endl;
+            }
+        }
+        file.close();
+    }
+    else
+        cout << "File failed to open." << endl;
+}
+
+//*******************************************************************************************************
