@@ -16,7 +16,8 @@
 //		This program completes the program methods discussed in class
 //
 //		Other files required:
-//			1.	none
+//			1. CarDriver.cpp
+//          2. Car.h
 //
 //*******************************************************************************************************
 
