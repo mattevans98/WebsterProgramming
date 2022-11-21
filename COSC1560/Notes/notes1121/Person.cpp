@@ -16,6 +16,8 @@ Person::Person(const char *name, int age)
     int size = strlen(name);
     this->name = new char[size + 1];
     strcpy(this->name, name);
+
+    cout << name << " in constructor" << endl;
 }
 
 Person::~Person()
