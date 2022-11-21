@@ -27,12 +27,24 @@
 #include <string>
 using namespace std;
 
+//*******************************************************************************************************
+
 class Employee
 {
 private:
     int employeeNumber;
     string employeeName;
     double salary;
+
+public:
+    void setEmployeeNumber(int employeeNumber);
+    void setEmployeeName(string employeeName);
+    void setSalary(double salary);
+    int getEmployeeNumber() const;
+    string getEmployeeName() const;
+    double getEmployeeSalary() const;
 };
+
+//*******************************************************************************************************
 
 #endif
