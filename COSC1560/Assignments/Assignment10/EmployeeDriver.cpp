@@ -26,8 +26,9 @@
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInput(const T, T = 0, T = 9999999);
+bool validateInputRange(const T, T = 0);
 void inputPrompt(Employee &);
+void display(Employee &);
 
 //*******************************************************************************************************
 
@@ -35,7 +36,20 @@ int main()
 {
     Employee myColleague;
 
-    inputPrompt(myColleague);
+    myColleague.setEmployeeNumber(1);
+    myColleague.setEmployeeName("John Doe");
+    myColleague.setSalary(3067.5);
+
+    Employee myself;
+    myself.setEmployeeNumber(2);
+    cout << "Please enter information about employee 2: " << endl;
+    inputPrompt(myself);
+
+    cout << string(40, '*') << endl;
+    cout << "Employee 1:" << endl;
+    display(myColleague);
+    cout << endl << "Employee 2:" << endl;
+    display(myself);
 
     return 0;
 }
@@ -43,17 +57,18 @@ int main()
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInputRange(const T input, T min = 0, T max = 9999999)
+bool validateInputRange(const T input, T min)
 {
     bool isValid;
 
-    if (input >= min && input <= max)
+    if (input >= min)
     {
         isValid = true;
     }
     else
     {
         isValid = false;
+        cout << "Error! Input must be more >= " << min << ". Try again: ";
     }
 
     return isValid;
@@ -70,10 +85,7 @@ void inputPrompt(Employee &myColleague)
     cout << "Enter the employee number: ";
     cin >> employeeNumber;
     while (!validateInputRange(employeeNumber, 1))
-    {
-        cout << "Invalid input. Enter a number between 0 and 9999: ";
         cin >> employeeNumber;
-    }
     myColleague.setEmployeeNumber(employeeNumber);
 
     cout << "Enter the employee name: ";
@@ -84,11 +96,17 @@ void inputPrompt(Employee &myColleague)
     cout << "Enter the employee salary: ";
     cin >> salary;
     while (!validateInputRange(salary, 0.0))
-    {
-        cout << "Invalid input. Enter a number between 0 and 9999: ";
         cin >> salary;
-    }
     myColleague.setSalary(salary);
+}
+
+//*******************************************************************************************************
+
+void display(Employee &employee)
+{
+    cout << employee.getEmployeeNumber() << endl;
+    cout << employee.getEmployeeName() << endl;
+    cout << employee.getEmployeeSalary() << endl;
 }
 
 //*******************************************************************************************************
