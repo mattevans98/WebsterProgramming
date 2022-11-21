@@ -106,7 +106,7 @@ void display(Employee &employee)
 {
     cout << setw(5) << left << employee.getEmployeeNumber();
     cout << setw(20) << employee.getEmployeeName();
-    cout << employee.getEmployeeSalary() << endl;
+    cout << setprecision(2) << fixed << employee.getEmployeeSalary() << endl;
 }
 
 //*******************************************************************************************************
@@ -119,10 +119,10 @@ Enter the employee name: Joe Doe
 Enter the employee salary: 100.8
 ****************************************
 Employee 1:
-1    John Doe            3067.5
+1    John Doe            3067.50
 
 Employee 2:
-35   Joe Doe             100.8
+35   Joe Doe             100.80
 
 Process finished with exit code 0
 */
