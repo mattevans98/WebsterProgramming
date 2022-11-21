@@ -15,3 +15,18 @@ Person::~Person()
     cout << name << " in destructor" << endl;
     delete[] name;
 }
+
+void Person::setName(const char *name)
+{
+    // remove current name
+    delete[] this->name;
+    // dynamically allocate new name
+    this->name = new char[strlen(name) + 1];
+    // copy new name over
+    strcpy(this->name, name);
+}
+
+const char *Person::getName() const
+{
+    return name;
+}
