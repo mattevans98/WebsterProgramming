@@ -13,6 +13,7 @@ private:
     int age;
 public:
     Person();
+    Person(const char *, int);
     ~Person();
 
     void setName(const char *);

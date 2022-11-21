@@ -10,6 +10,14 @@ Person::Person()
     cout << name << " in constructor" << endl;
 }
 
+Person::Person(const char *name, int age)
+{
+    this->age = age;
+    int size = strlen(name);
+    this->name = new char[size + 1];
+    strcpy(this->name, name);
+}
+
 Person::~Person()
 {
     cout << name << " in destructor" << endl;
