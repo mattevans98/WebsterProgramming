@@ -26,7 +26,7 @@
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInput(const T, T = 0, T = 9999);
+bool validateInput(const T, T = 0, T = 9999999);
 void inputPrompt(Employee &);
 
 //*******************************************************************************************************
@@ -46,7 +46,7 @@ int main()
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInputRange(const T input, T min, T max)
+bool validateInputRange(const T input, T min = 0, T max = 999)
 {
     bool isValid;
 
@@ -64,3 +64,33 @@ bool validateInputRange(const T input, T min, T max)
 
 //*******************************************************************************************************
 
+void inputPrompt(Employee &myColleague)
+{
+    int employeeNumber;
+    string employeeName;
+    double salary;
+
+    cout << "Enter the employee number: ";
+    cin >> employeeNumber;
+    while (!validateInputRange(employeeNumber, 1))
+    {
+        cout << "Invalid input. Enter a number between 0 and 9999: ";
+        cin >> employeeNumber;
+    }
+    myColleague.setEmployeeNumber(employeeNumber);
+
+    cout << "Enter the employee name: ";
+    cin >> employeeName;
+    myColleague.setEmployeeName(employeeName);
+
+    cout << "Enter the employee salary: ";
+    cin >> salary;
+    while (!validateInputRange(salary, 0.0))
+    {
+        cout << "Invalid input. Enter a number between 0 and 9999: ";
+        cin >> salary;
+    }
+    myColleague.setSalary(salary);
+}
+
+//*******************************************************************************************************
