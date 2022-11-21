@@ -12,7 +12,8 @@ private:
     double price;
     string make;
 public:
-    Car();
+    //Car();
+    Car(int mileage = 0, double price = 0.0, string make = "***");
 
     void display() const;
     void setPrice(double); // HW

@@ -17,9 +17,20 @@ void Car::setValues(int mileage, double price, string make)
     this->mileage = mileage;
 }
 
-Car::Car()
+//Car::Car()
+//{
+//    make = "***";
+//    price = 0.0;
+//    mileage = 0;
+//    cout << "Hello from the default constructor" << endl;
+//}
+
+// Overloaded constructor
+Car::Car(int mileage, double price, string make)
 {
-    make = "***";
-    price = 0.0;
-    mileage = 0;
+    this->mileage = mileage;
+    this->price = price;
+    this->make = make;
+
+    cout << "Hello from the second constructor." << endl;
 }
