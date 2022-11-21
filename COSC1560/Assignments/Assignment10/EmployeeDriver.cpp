@@ -104,9 +104,25 @@ void inputPrompt(Employee &myColleague)
 
 void display(Employee &employee)
 {
-    cout << employee.getEmployeeNumber() << endl;
-    cout << employee.getEmployeeName() << endl;
+    cout << setw(5) << left << employee.getEmployeeNumber();
+    cout << setw(20) << employee.getEmployeeName();
     cout << employee.getEmployeeSalary() << endl;
 }
 
 //*******************************************************************************************************
+
+// Output:
+/*
+Please enter information about employee 2:
+Enter the employee number: 35
+Enter the employee name: Joe Doe
+Enter the employee salary: 100.8
+****************************************
+Employee 1:
+1    John Doe            3067.5
+
+Employee 2:
+35   Joe Doe             100.8
+
+Process finished with exit code 0
+*/
