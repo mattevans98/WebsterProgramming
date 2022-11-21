@@ -35,10 +35,7 @@ int main()
 {
     Employee myColleague;
 
-    int employeeNumber;
-    string employeeName;
-    double salary;
-
+    inputPrompt(myColleague);
 
     return 0;
 }
@@ -46,7 +43,7 @@ int main()
 //*******************************************************************************************************
 
 template<typename T>
-bool validateInputRange(const T input, T min = 0, T max = 999)
+bool validateInputRange(const T input, T min = 0, T max = 9999999)
 {
     bool isValid;
 
@@ -80,7 +77,8 @@ void inputPrompt(Employee &myColleague)
     myColleague.setEmployeeNumber(employeeNumber);
 
     cout << "Enter the employee name: ";
-    cin >> employeeName;
+    cin.ignore();
+    getline(cin, employeeName);
     myColleague.setEmployeeName(employeeName);
 
     cout << "Enter the employee salary: ";
