@@ -4,8 +4,7 @@
 Person::Person()
 {
     age = 0;
-    name = new char[51];
-    strcpy(name, "***");
+    _initName("***");
 
     cout << name << " in constructor" << endl;
 }
@@ -13,11 +12,8 @@ Person::Person()
 Person::Person(const char *name, int age)
 {
     this->age = age;
-    int size = strlen(name);
-    this->name = new char[size + 1];
-    strcpy(this->name, name);
-
     cout << name << " in constructor" << endl;
+    _initName(name);
 }
 
 Person::~Person()
@@ -26,14 +22,18 @@ Person::~Person()
     delete[] name;
 }
 
+void Person::_initName(const char *name)
+{
+    int size = strlen(name);
+    this->name = new char[size + 1];
+    strcpy(this->name, name);
+}
+
 void Person::setName(const char *name)
 {
     // remove current name
     delete[] this->name;
-    // dynamically allocate new name
-    this->name = new char[strlen(name) + 1];
-    // copy new name over
-    strcpy(this->name, name);
+    _initName(name);
 }
 
 const char *Person::getName() const

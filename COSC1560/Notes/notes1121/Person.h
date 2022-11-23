@@ -11,6 +11,8 @@ class Person
 private:
     char *name;
     int age;
+    void _initName(const char *); // underscore indicates private member function
+
 public:
     Person();
     Person(const char *, int);
