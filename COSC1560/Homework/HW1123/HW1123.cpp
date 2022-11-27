@@ -52,5 +52,18 @@ public:
 
 int main()
 {
+    Yard yards[3];
 
+    for (auto &yard: yards)
+    {
+        int len, w;
+        cout << "Enter the length of the yard: ";
+        cin >> len;
+        yard.setLength(len);
+        cout << "Enter the width of the yard: ";
+        cin >> w;
+        yard.setWidth(w);
+    }
 }
+
+//*******************************************************************************************************
