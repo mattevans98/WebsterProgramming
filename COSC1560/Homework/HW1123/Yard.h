@@ -16,14 +16,13 @@
 //		This program completes the program from problem 13.26 in the textbook
 //
 //		Other files required:
-//			1.	none
+//			1.	Yard.cpp
+//			2.	YardDriver.cpp
 //
 //*******************************************************************************************************
 
-#include <iostream>
-using namespace std;
-
-//*******************************************************************************************************
+#ifndef YARD_H
+#define YARD_H
 
 class Yard
 {
@@ -48,22 +47,4 @@ public:
     }
 };
 
-//*******************************************************************************************************
-
-int main()
-{
-    Yard yards[3];
-
-    for (auto &yard: yards)
-    {
-        int len, w;
-        cout << "Enter the length of the yard: ";
-        cin >> len;
-        yard.setLength(len);
-        cout << "Enter the width of the yard: ";
-        cin >> w;
-        yard.setWidth(w);
-    }
-}
-
-//*******************************************************************************************************
+#endif
