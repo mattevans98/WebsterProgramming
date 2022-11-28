@@ -12,6 +12,7 @@ public:
     MyString(int = 5);
     ~MyString();
     void assign(const char *);
+    void append(const char *);
 };
 
 
