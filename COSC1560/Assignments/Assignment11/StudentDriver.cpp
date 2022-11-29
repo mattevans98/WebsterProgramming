@@ -47,10 +47,16 @@ int main()
 
 //*******************************************************************************************************
 
-void displayAllStudentRecords(Student *student, const int size)
+void displayAllStudentRecords(Student *students, const int size)
 {
     cout << left << setw(25) << "Student Name";
     cout << setw(25) << "Student ID";
     cout << setw(25) << "GPA" << endl;
     cout << string(60, '*') << endl;
+    for (int i = 0; i < size; i++)
+    {
+        cout << setw(25) << students[i].getStudentName();
+        cout << setw(25) << students[i].getStudentId();
+        cout << setw(25) << students[i].getGpa() << endl;
+    }
 }
