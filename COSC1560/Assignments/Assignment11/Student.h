@@ -27,7 +27,20 @@
 
 class Student
 {
-
+private:
+    int studentId;
+    char *studentName;
+    double gpa;
+private:
+    Student();
+    Student(int, char *, double);
+    ~Student();
+    void setStudentId(int);
+    void setStudentName(char *);
+    void setGpa(double);
+    int getStudentId() const;
+    char *getStudentName() const;
+    double getGpa() const;
 };
 
 
