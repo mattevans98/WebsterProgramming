@@ -34,6 +34,8 @@ const int SIZE = 5;
 
 void displayAllStudentRecords(Student *, const int);
 void getInput(Student *, const int);
+int getValidatedId();
+double getValidatedGpa();
 
 //*******************************************************************************************************
 
@@ -60,3 +62,67 @@ void displayAllStudentRecords(Student *students, const int size)
         cout << setw(25) << students[i].getGpa() << endl;
     }
 }
+
+//*******************************************************************************************************
+
+void getInput(Student *students, const int size)
+{
+    int studentId;
+    char studentName[81];
+    double gpa;
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Please enter information for student " << i + 1 << endl;
+        studentId = getValidatedId();
+        cout << "Please enter name: ";
+        cin.ignore();
+        cin.getline(studentName, 81);
+        gpa = getValidatedGpa();
+        students[i].setStudentName(studentName);
+        students[i].setStudentId(studentId);
+        students[i].setGpa(gpa);
+    }
+}
+
+//*******************************************************************************************************
+
+int getValidatedId()
+{
+    int studentId;
+    bool valid = false;
+
+    do
+    {
+        cout << "Please enter ID: ";
+        cin >> studentId;
+        if (studentId < 1000 || studentId > 2000)
+            cout << "Error: ID must be between 1000 and 2000." << endl;
+        else
+            valid = true;
+    } while (!valid);
+
+    return studentId;
+}
+
+//*******************************************************************************************************
+
+double getValidatedGpa()
+{
+    double gpa;
+    bool valid = false;
+
+    do
+    {
+        cout << "Please enter GPA: ";
+        cin >> gpa;
+        if (gpa < 0.0 || gpa > 4.0)
+            cout << "Error: GPA must be between 0.0 and 4.0." << endl;
+        else
+            valid = true;
+    } while (!valid);
+
+    return gpa;
+}
+
+//*******************************************************************************************************
