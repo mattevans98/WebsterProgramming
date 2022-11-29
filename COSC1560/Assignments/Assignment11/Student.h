@@ -23,7 +23,9 @@
 
 #ifndef STUDENT_H
 #define STUDENT_H
+
 #include <cstring>
+#include <iostream>
 
 //*******************************************************************************************************
 

@@ -22,6 +22,7 @@
 //*******************************************************************************************************
 
 #include "Student.h"
+using namespace std;
 
 //*******************************************************************************************************
 
@@ -47,6 +48,10 @@ Student::Student(int studentId, char *studentName, double gpa)
 
 Student::~Student()
 {
+    cout << studentId << ", " << studentName << " removed" << endl;
+    studentId = 0;
+    strcpy(studentName, "*none*");
+    gpa = 0.0;
     delete[] studentName;
 }
 

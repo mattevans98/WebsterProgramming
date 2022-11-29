@@ -22,13 +22,8 @@
 //*******************************************************************************************************
 
 #include "Student.h"
-#include <iostream>
 #include <iomanip>
 using namespace std;
-
-//*******************************************************************************************************
-
-const int SIZE = 5;
 
 //*******************************************************************************************************
 
@@ -41,8 +36,13 @@ double getValidatedGpa();
 
 int main()
 {
+    const int SIZE = 3;
+
     Student *students = new Student[SIZE];
+    getInput(students, SIZE);
     displayAllStudentRecords(students, SIZE);
+
+    delete[] students;
 
     return 0;
 }
@@ -59,7 +59,7 @@ void displayAllStudentRecords(Student *students, const int size)
     {
         cout << setw(25) << students[i].getStudentName();
         cout << setw(25) << students[i].getStudentId();
-        cout << setw(25) << students[i].getGpa() << endl;
+        cout << setw(25) << setprecision(2) << fixed << students[i].getGpa() << endl;
     }
 }
 
@@ -74,11 +74,11 @@ void getInput(Student *students, const int size)
     for (int i = 0; i < size; i++)
     {
         cout << "Please enter information for student " << i + 1 << endl;
-        studentId = getValidatedId();
         cout << "Please enter name: ";
-        cin.ignore();
         cin.getline(studentName, 81);
+        studentId = getValidatedId();
         gpa = getValidatedGpa();
+        cin.ignore();
         students[i].setStudentName(studentName);
         students[i].setStudentId(studentId);
         students[i].setGpa(gpa);
