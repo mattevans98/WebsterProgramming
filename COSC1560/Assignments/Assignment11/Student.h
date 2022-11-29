@@ -33,7 +33,7 @@ private:
     int studentId;
     char *studentName;
     double gpa;
-private:
+public:
     Student();
     Student(int, char *, double);
     ~Student();

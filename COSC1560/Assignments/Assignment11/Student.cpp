@@ -28,6 +28,7 @@
 Student::Student()
 {
     studentId = 0;
+    studentName = new char[81];
     strcpy(studentName, "*none*");
     gpa = 0.0;
 }
