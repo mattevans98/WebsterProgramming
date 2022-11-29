@@ -13,7 +13,7 @@
 //		Due:					11/30/22
 //
 //
-//		This program declares the Student ADT
+//		This program manipulates data from the Student ADT
 //
 //		Other files required:
 //			1.	Student.h
@@ -126,3 +126,35 @@ double getValidatedGpa()
 }
 
 //*******************************************************************************************************
+
+// Output:
+/*
+Please enter information for student 1
+Please enter name: John Doe
+Please enter ID: 100001
+Error: ID must be between 1000 and 2000.
+Please enter ID: 1001
+Please enter GPA: 4.5
+Error: GPA must be between 0.0 and 4.0.
+Please enter GPA: 3.5
+Please enter information for student 2
+Please enter name: Jane Doe
+Please enter ID: 1002
+Please enter GPA: 3.0
+Please enter information for student 3
+Please enter name: Joe Doe
+Please enter ID: -1
+Error: ID must be between 1000 and 2000.
+Please enter ID: 1003
+Please enter GPA: 2.9
+Student Name             Student ID               GPA
+************************************************************
+John Doe                 1001                     3.50
+Jane Doe                 1002                     3.00
+Joe Doe                  1003                     2.90
+1003, Joe Doe removed
+1002, Jane Doe removed
+1001, John Doe removed
+
+Process finished with exit code 0
+*/
