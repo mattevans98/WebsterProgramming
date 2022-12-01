@@ -25,11 +25,20 @@
 
 #ifndef STORE_H
 #define STORE_H
-
+#include "RetailItem.h"
 
 class Store
 {
-
+private:
+    RetailItem *items;
+    int numItems;
+    string storeName;
+public:
+    Store(int = 5);
+    void displayAllItems() const;
+    int getNumItems() const;
+    string getStoreName() const;
+    void setAllItems();
 };
 
 

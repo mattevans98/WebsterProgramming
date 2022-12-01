@@ -25,11 +25,11 @@
 
 #include "RetailItem.h"
 
-RetailItem::RetailItem()
+RetailItem::RetailItem(string description, int quantity, double price)
 {
-    description = "*none*";
-    quantity = 0;
-    price = 0.0;
+    this->description = description;
+    this->quantity = quantity;
+    this->price = price;
 }
 
 //*******************************************************************************************************

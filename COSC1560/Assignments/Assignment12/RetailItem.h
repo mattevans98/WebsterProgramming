@@ -38,7 +38,7 @@ private:
     int quantity;
     double price;
 public:
-    RetailItem();
+    RetailItem(string = "*none", int = 0, double = 0.0);
     string getDescription() const;
     int getQuantity() const;
     double getPrice() const;
