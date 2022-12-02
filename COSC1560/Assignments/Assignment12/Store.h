@@ -25,7 +25,10 @@
 
 #ifndef STORE_H
 #define STORE_H
+
 #include "RetailItem.h"
+#include <iostream>
+#include <iomanip>
 
 class Store
 {
