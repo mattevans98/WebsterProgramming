@@ -43,9 +43,8 @@ Store::~Store()
 
 void Store::displayAllItems() const
 {
-    cout << storeName << endl;
-    cout << getStoreName() << endl;
-    cout << getNumItems() << " in stock" << endl;
+    cout << endl << storeName << endl;
+    cout << numItems << " in stock" << endl;
     cout << string(45, '*') << endl;
     cout << left << setw(20) << "Description" << setw(10) << "Price" << setw(10)
          << "Quantity" << endl;
