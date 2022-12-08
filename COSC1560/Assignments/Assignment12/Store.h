@@ -37,7 +37,8 @@ private:
     int numItems;
     string storeName;
 public:
-    Store(int = 5);
+    Store(int = 5, string = "Webster Grocery");
+    ~Store();
     void displayAllItems() const;
     int getNumItems() const;
     string getStoreName() const;
